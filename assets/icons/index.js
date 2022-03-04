@@ -8,6 +8,8 @@ import SparklesIconSelected from './SparklesIconSelected.svg';
 import SparklesIconUnselected from './SparklesIconUnselected.svg';
 import ChatIconSelected from './ChatIconSelected.svg';
 import ChatIconUnselected from './ChatIconUnselected.svg';
+import Ye from './Ye.svg';
+import Bound2 from './Bound2.svg';
 
 export {
   SearchIcon,
@@ -20,4 +22,6 @@ export {
   SparklesIconUnselected,
   ChatIconSelected,
   ChatIconUnselected,
+  Ye,
+  Bound2,
 };

@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
@@ -7,9 +7,7 @@ import ArtistsFeed from './screens/ArtistsFeed';
 import HomeFeed from './screens/HomeFeed';
 import ProfileScreen from './screens/ProfileScreen';
 import CommunitiesScreen from './screens/CommunitiesScreen';
-import ArtistNFTs from './screens/ArtistNFTs';
-import NFTDetails from './screens/NFTDetails';
-import PurchaseScreen from './screens/PurchaseScreen';
+import { ArtistNFTScreen } from './screens';
 
 import {
   SearchIcon,
@@ -151,7 +149,7 @@ export default function App() {
 
         <Tab.Screen
           name="Artists"
-          component={SparklesStack}
+          component={ArtistNFTScreen}
           options={{
             headerShown: false,
           }}
