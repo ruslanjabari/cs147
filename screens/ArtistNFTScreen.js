@@ -4,7 +4,9 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import ArtistDetails from './ArtistDetails';
 import ArtistCampaignTabs from './ArtistCampaignTabs';
 
-export default function ArtistNFTScreen() {
+export default function ArtistNFTScreen({ }) {
+
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={{ flex: 1 }}>

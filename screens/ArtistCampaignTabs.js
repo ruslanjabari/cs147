@@ -1,7 +1,10 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Animated, View, TouchableOpacity, Text, StyleSheet, FlatList } from 'react-native';
 import { Colors } from '../assets/themes';
-import { Bound2 } from '../assets/icons/';
+import { Bound2, Yeezus, LifeOfPablo, Donda } from '../assets/icons/';
+import React, { useState } from 'react';
+import ArtistNFTScreen from './ArtistNFTScreen';
+
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -14,8 +17,8 @@ function customTabNav({ state, descriptors, navigation, position }) {
           options.tabBarLabel !== undefined
             ? options.tabBarLabel
             : options.title !== undefined
-            ? options.title
-            : route.name;
+              ? options.title
+              : route.name;
 
         const isFocused = state.index === index;
 
@@ -69,17 +72,79 @@ function customTabNav({ state, descriptors, navigation, position }) {
   );
 }
 
+function renderItem({ item }, props) {
+  let name = props.name;
+
+  if (name === "YEEZUS") {
+    return (<Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />);
+  } else if (name === "DONDA") {
+    return (<Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />);
+  } else if (name === "THE L") {
+    return (<LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />);
+  }
+}
+
+function ArtistsNFTs(props) {
+
+  return (<FlatList numColumns={2} keyExtractor={item => item.id} data={props.data} renderItem={(item, index) => renderItem(item, props)} />)
+}
+
 export default function ArtistCampaignTabs() {
+  const [data, setData] = useState([
+    {
+      id: 1,
+      color: 'red',
+    },
+    {
+      id: 2,
+      color: 'orange',
+    },
+    {
+      id: 3,
+      color: 'yellow',
+    },
+    {
+      id: 4,
+      color: 'green',
+    },
+    {
+      id: 5,
+      color: 'cyan',
+    },
+    {
+      id: 6,
+      color: 'blue',
+    },
+
+  ]);
+
+  let n = "YEEZUS"
+
   return (
     <>
       <Text style={styles.text}>CAMPAIGNS</Text>
       <Tab.Navigator tabBar={customTabNav}>
         <Tab.Screen
           name="YEEZUS"
-          component={() => <FlatList data={[1]} renderItem={() => <Bound2 width={200} />} />}
-        />
-        <Tab.Screen name="DONDA" component={() => <></>} />
-        <Tab.Screen name="The L" component={() => <></>} />
+
+        >
+          {() => <ArtistsNFTs data={data} name={"YEEZUS"} />}
+        </Tab.Screen>
+
+        <Tab.Screen
+          name="DONDA"
+
+        >
+          {() => <ArtistsNFTs data={data} name={"DONDA"} />}
+        </Tab.Screen>
+
+        <Tab.Screen
+          name="THE L"
+
+        >
+          {() => <ArtistsNFTs data={data} name={"THE L"} />}
+        </Tab.Screen>
+
       </Tab.Navigator>
     </>
   );
@@ -91,4 +156,7 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginLeft: 55,
   },
+  nft: {
+    marginBottom: 10
+  }
 });

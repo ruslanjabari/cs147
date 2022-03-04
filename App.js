@@ -44,6 +44,7 @@ const screenOptionsHeader = {
       <DMIcon />
     </View>
   ),
+  headerShadowVisible: false
 };
 
 export default function App() {
@@ -78,6 +79,11 @@ export default function App() {
         <SparklesStack.Screen
           name="ArtistsFeed"
           component={ArtistsFeed}
+          options={screenOptionsHeader}
+        />
+        <SparklesStack.Screen
+          name="ArtistNFTScreen"
+          component={ArtistNFTScreen}
           options={screenOptionsHeader}
         />
       </SparklesStack.Navigator>
@@ -149,7 +155,7 @@ export default function App() {
 
         <Tab.Screen
           name="Artists"
-          component={ArtistNFTScreen}
+          component={SparklesStack}
           options={{
             headerShown: false,
           }}

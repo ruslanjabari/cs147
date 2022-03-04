@@ -10,6 +10,9 @@ import ChatIconSelected from './ChatIconSelected.svg';
 import ChatIconUnselected from './ChatIconUnselected.svg';
 import Ye from './Ye.svg';
 import Bound2 from './Bound2.svg';
+import Yeezus from './Yeezus.svg';
+import Donda from './Donda.svg';
+import LifeOfPablo from './LifeOfPablo.svg';
 
 export {
   SearchIcon,
@@ -24,4 +27,7 @@ export {
   ChatIconUnselected,
   Ye,
   Bound2,
+  Yeezus,
+  Donda,
+  LifeOfPablo
 };
