@@ -7,7 +7,7 @@ import ArtistsFeed from './screens/ArtistsFeed';
 import HomeFeed from './screens/HomeFeed';
 import ProfileScreen from './screens/ProfileScreen';
 import CommunitiesScreen from './screens/CommunitiesScreen';
-import { ArtistNFTScreen } from './screens';
+import { ArtistNFTScreen, PurchaseScreen } from './screens';
 
 import {
   SearchIcon,
@@ -86,6 +86,13 @@ export default function App() {
           component={ArtistNFTScreen}
           options={screenOptionsHeader}
         />
+
+        <SparklesStack.Screen
+          name="PurchaseScreen"
+          component={PurchaseScreen}
+          options={screenOptionsHeader}
+        />
+
       </SparklesStack.Navigator>
     );
   }

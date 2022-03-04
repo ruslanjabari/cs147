@@ -1,8 +1,8 @@
 import { Pressable, View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import Bound2 from '../assets/icons/Bound2.svg';
 import { Colors } from '../assets/themes';
-export function PurchaseScreen({ navigation, route }) {
-  // const nftObj = route.params.nft;
+export default function PurchaseScreen({ navigation, route }) {
+  const nftObj = route.params.NFT;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -10,7 +10,8 @@ export function PurchaseScreen({ navigation, route }) {
         <Text style={styles.headerTitle}>PURCHASE COMPLETED</Text>
       </View>
       <View style={styles.body}>
-        <Bound2 width={400} />
+        {nftObj}
+
         <View style={styles.description}>
           <Text style={styles.descriptionText}>
             You now own BOUND 2 #001 and can access exclusive communities and content with its

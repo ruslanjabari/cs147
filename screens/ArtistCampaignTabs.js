@@ -109,13 +109,13 @@ export default function ArtistCampaignTabs() {
 
     if (name === "YEEZUS") {
       NFTName = "BOUND 2 #00" + item.id;
-      return (<Pressable onPress={() => navigation.navigate("Test", { "NFT": <Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName })}><Text><Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+      return (<Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "NFT": <Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName } })}><Text><Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
     } else if (name === "DONDA") {
       NFTName = "DONDA CHANT #00" + item.id;
-      return (<Pressable onPress={() => navigation.navigate("NFTDetail", { "NFT": <Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName })}><Text><Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+      return (<Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "NFT": <Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName } })}><Text><Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
     } else if (name === "THE L") {
       NFTName = "THE L #00" + item.id;
-      return (<Pressable onPress={() => navigation.navigate("NFTDetail", { "NFT": <LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName })}><Text><LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+      return (<Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "NFT": <LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName } })}><Text><LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
     }
   }
 
