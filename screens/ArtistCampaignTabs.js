@@ -106,22 +106,41 @@ export default function ArtistCampaignTabs() {
   function renderItem({ item }, props) {
     let name = props.name;
     let NFTName = null;
+    let color = item.color;
+    let style = styles.nft;
 
     if (name === "YEEZUS") {
       NFTName = "BOUND 2 #00" + item.id;
-      return (<Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "NFT": <Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName } })}><Text><Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+      return (
+        <Pressable
+          onPress={() => navigation.navigate("Artists", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "Yeezus", "style": { style }, "NFTName": NFTName } })}>
+          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+            <Yeezus style={{ position: 'relative' }} width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} >
+              <Text style={{ zIndex: 2, color: 'black', position: 'absolute', top: 0, left: 0 }}>hi</Text>
+            </Yeezus>
+          </View>
+
+        </Pressable>);
     } else if (name === "DONDA") {
       NFTName = "DONDA CHANT #00" + item.id;
-      return (<Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "NFT": <Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName } })}><Text><Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+      return (
+        <Pressable
+          onPress={() => navigation.navigate("Artists", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "Donda", "style": { style }, "NFTName": NFTName } })}>
+          <Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />
+        </Pressable>);
     } else if (name === "THE L") {
       NFTName = "THE L #00" + item.id;
-      return (<Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "NFT": <LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName } })}><Text><LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+      return (
+        <Pressable
+          onPress={() => navigation.navigate("Artists", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "The L", "style": { style }, "NFTName": NFTName } })}>
+          <LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />
+        </Pressable>);
     }
   }
 
   function ArtistsNFTs(props) {
 
-    return (<FlatList numColumns={2} keyExtractor={item => item.id} data={props.data} renderItem={(item, index) => renderItem(item, props)} />)
+    return (<FlatList contentContainerStyle={styles.NFTContainer} numColumns={2} keyExtractor={item => item.id} data={props.data} renderItem={(item, index) => renderItem(item, props)} />)
   }
 
 
@@ -163,5 +182,9 @@ const styles = StyleSheet.create({
   },
   nft: {
     marginBottom: 10
+  },
+  NFTContainer: {
+    display: 'flex',
+    alignItems: 'center',
   }
 });

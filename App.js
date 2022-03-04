@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from 'react-native';
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
@@ -7,7 +7,7 @@ import ArtistsFeed from './screens/ArtistsFeed';
 import HomeFeed from './screens/HomeFeed';
 import ProfileScreen from './screens/ProfileScreen';
 import CommunitiesScreen from './screens/CommunitiesScreen';
-import { ArtistNFTScreen, PurchaseScreen } from './screens';
+import { ArtistNFTScreen, PurchaseScreen, NFTDetails } from './screens';
 
 import {
   SearchIcon,
@@ -62,6 +62,9 @@ export default function App() {
 
   const Tab = createBottomTabNavigator();
 
+  const navTheme = DefaultTheme;
+  navTheme.colors.background = 'white';
+
   function HomeStack() {
     const HomeStack = createStackNavigator();
 
@@ -90,6 +93,12 @@ export default function App() {
         <SparklesStack.Screen
           name="PurchaseScreen"
           component={PurchaseScreen}
+          options={screenOptionsHeader}
+        />
+
+        <SparklesStack.Screen
+          name="NFTDetails"
+          component={NFTDetails}
           options={screenOptionsHeader}
         />
 
@@ -124,7 +133,7 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer>
+    <NavigationContainer theme={navTheme}>
       <Tab.Navigator
         initialRouteName="HomeStack"
         screenOptions={({ route }) => ({

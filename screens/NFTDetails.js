@@ -3,15 +3,37 @@ import Bound2 from '../assets/icons/Bound2.svg';
 import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
 import PiechartIcon from '../assets/icons/PiechartIcon.svg';
 import { Colors } from '../assets/themes';
+import { LifeOfPablo, Yeezus, Donda } from '../assets/icons';
 
-export function NFTDetails() {
+export default function NFTDetails({ navigation, route }) {
+  const nftObj = route.params.NFT;
+  const color = route.params.color.color;
+  const NFTCategory = route.params.NFTCategory;
+  let style = route.params.style;
+  const NFTName = route.params.NFTName;
+  let NFT = null;
+
+  console.log(color, "color!!!!")
+  console.log(NFTName, "NFTNME!")
+  if (NFTCategory === "Yeezus") {
+    NFT = <Text><Yeezus svgwidth={200} svgheight={400} width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  } else if (NFTCategory === "Donda") {
+    NFT = <Text><Donda width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  } else if (NFTCategory === "The L") {
+    NFT = <Text><LifeOfPablo width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  }
+
   return (
     <SafeAreaView style={styles.container}>
+
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Bound2 #001</Text>
+
+        <Text style={styles.NFTName}>{NFTName}</Text>
+
+        {NFT}
       </View>
       <View style={styles.body}>
-        <Bound2 width={400} />
+        <Text>{nftObj}</Text>
         <View style={styles.description}>
           <Text style={styles.descriptionText}>
             Having been vocal about it for years, Ye is donating 10% of proceeds to the “Free Larry
@@ -20,7 +42,7 @@ export function NFTDetails() {
         </View>
       </View>
       <View style={styles.footer}>
-        <Pressable style={styles.button}>
+        <Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "color": { color }, "NFTCategory": "Yeezus", "style": { style }, "NFTName": NFTName } })} style={styles.button}>
           <ShoppingCartIcon />
           <Text style={styles.footerText}>PURCHASE</Text>
         </Pressable>
@@ -43,6 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    marginTop: 100
   },
   headerTitle: {
     fontSize: 48,
@@ -80,4 +103,8 @@ const styles = StyleSheet.create({
     fontFamily: 'Dosis_400Regular',
     marginLeft: 5,
   },
+  NFTName: {
+    fontSize: 44,
+    fontFamily: 'Dosis_700Bold'
+  }
 });

@@ -1,16 +1,36 @@
 import { Pressable, View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import Bound2 from '../assets/icons/Bound2.svg';
 import { Colors } from '../assets/themes';
+import { LifeOfPablo, Yeezus, Donda } from '../assets/icons';
+
 export default function PurchaseScreen({ navigation, route }) {
   const nftObj = route.params.NFT;
+  const color = route.params.color.color;
+  const NFTCategory = route.params.NFTCategory;
+  const style = route.params.style;
+  const NFTName = route.params.NFTName;
+
+
+
+  let NFT = null;
+
+  if (NFTCategory === "Yeezus") {
+    NFT = <Text><Yeezus width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  } else if (NFTCategory === "Donda") {
+    NFT = <Text><Donda width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  } else if (NFTCategory === "The L") {
+    NFT = <Text><LifeOfPablo width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>PURCHASE COMPLETED</Text>
+        <Text style={styles.headerTitle}>PURCHASE COMPLETE!</Text>
       </View>
       <View style={styles.body}>
-        {nftObj}
+        <View style={styles.NFTDisplay}>
+          {NFT}
+        </View>
 
         <View style={styles.description}>
           <Text style={styles.descriptionText}>
@@ -76,4 +96,8 @@ const styles = StyleSheet.create({
     color: Colors.white,
     fontFamily: 'Dosis_400Regular',
   },
+  NFTDisplay: {
+    display: 'flex',
+    alignItems: 'center'
+  }
 });
