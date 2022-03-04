@@ -7,7 +7,7 @@ export default function ArtistDetails() {
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Ye width={50} style={{ height: 100, width: 100 }} />
+          <Ye width={50} />
         </View>
         <View style={styles.headerRight}>
           <View style={styles.headerRightArtistName}>
@@ -44,7 +44,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Dosis_700Bold',
   },
   headerRight: {
-    backgroundColor: 'blue',
+
     // width: '70%',
   },
   headerRightGroup: {

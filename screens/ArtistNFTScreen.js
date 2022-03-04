@@ -22,5 +22,6 @@ export default function ArtistNFTScreen({ }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+
   },
 });

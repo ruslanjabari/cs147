@@ -1,9 +1,10 @@
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { Animated, View, TouchableOpacity, Text, StyleSheet, FlatList } from 'react-native';
+import { Animated, View, TouchableOpacity, Text, StyleSheet, FlatList, Pressable } from 'react-native';
 import { Colors } from '../assets/themes';
 import { Bound2, Yeezus, LifeOfPablo, Donda } from '../assets/icons/';
 import React, { useState } from 'react';
 import ArtistNFTScreen from './ArtistNFTScreen';
+import { useNavigation } from '@react-navigation/native';
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -72,24 +73,8 @@ function customTabNav({ state, descriptors, navigation, position }) {
   );
 }
 
-function renderItem({ item }, props) {
-  let name = props.name;
-
-  if (name === "YEEZUS") {
-    return (<Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />);
-  } else if (name === "DONDA") {
-    return (<Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />);
-  } else if (name === "THE L") {
-    return (<LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />);
-  }
-}
-
-function ArtistsNFTs(props) {
-
-  return (<FlatList numColumns={2} keyExtractor={item => item.id} data={props.data} renderItem={(item, index) => renderItem(item, props)} />)
-}
-
 export default function ArtistCampaignTabs() {
+  let navigation = useNavigation();
   const [data, setData] = useState([
     {
       id: 1,
@@ -118,7 +103,27 @@ export default function ArtistCampaignTabs() {
 
   ]);
 
-  let n = "YEEZUS"
+  function renderItem({ item }, props) {
+    let name = props.name;
+    let NFTName = null;
+
+    if (name === "YEEZUS") {
+      NFTName = "BOUND 2 #00" + item.id;
+      return (<Pressable onPress={() => navigation.navigate("Test", { "NFT": <Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName })}><Text><Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+    } else if (name === "DONDA") {
+      NFTName = "DONDA CHANT #00" + item.id;
+      return (<Pressable onPress={() => navigation.navigate("NFTDetail", { "NFT": <Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName })}><Text><Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+    } else if (name === "THE L") {
+      NFTName = "THE L #00" + item.id;
+      return (<Pressable onPress={() => navigation.navigate("NFTDetail", { "NFT": <LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />, "NFTName": NFTName })}><Text><LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} /></Text></Pressable>);
+    }
+  }
+
+  function ArtistsNFTs(props) {
+
+    return (<FlatList numColumns={2} keyExtractor={item => item.id} data={props.data} renderItem={(item, index) => renderItem(item, props)} />)
+  }
+
 
   return (
     <>
