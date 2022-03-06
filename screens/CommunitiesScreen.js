@@ -1,10 +1,12 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React from 'react';
+import { View, FlatList, SafeAreaView, StyleSheet } from 'react-native';
 
 export default function CommunitiesScreen() {
-    return (
-        <View>
-            <Text>Communities Screen</Text>
-        </View>
-    )
+  return <SafeAreaView style={styles.container}></SafeAreaView>;
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+});

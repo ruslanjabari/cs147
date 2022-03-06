@@ -13,6 +13,7 @@ import Bound2 from './Bound2.svg';
 import Yeezus from './Yeezus.svg';
 import Donda from './Donda.svg';
 import LifeOfPablo from './LifeOfPablo.svg';
+import MusicNoteIcon from './MusicNoteIcon.svg';
 
 export {
   SearchIcon,
@@ -29,5 +30,6 @@ export {
   Bound2,
   Yeezus,
   Donda,
-  LifeOfPablo
+  LifeOfPablo,
+  MusicNoteIcon,
 };

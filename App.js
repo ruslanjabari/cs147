@@ -7,8 +7,16 @@ import ArtistsFeed from './screens/ArtistsFeed';
 import HomeFeed from './screens/HomeFeed';
 import ProfileScreen from './screens/ProfileScreen';
 import CommunitiesScreen from './screens/CommunitiesScreen';
-import { ArtistNFTScreen, PurchaseScreen, NFTDetails } from './screens';
+<<<<<<< Updated upstream
 
+import { ArtistNFTScreen, PurchaseScreen, NFTDetails } from './screens';
+||||||| constructed merge base
+import { ArtistNFTScreen } from './screens';
+
+=======
+import { ArtistNFTScreen } from './screens';
+// import { ArtistsFeed } from './screens/PurchaseScreen';
+>>>>>>> Stashed changes
 import {
   SearchIcon,
   DMIcon,
@@ -44,7 +52,7 @@ const screenOptionsHeader = {
       <DMIcon />
     </View>
   ),
-  headerShadowVisible: false
+  headerShadowVisible: false,
 };
 
 export default function App() {
@@ -101,7 +109,6 @@ export default function App() {
           component={NFTDetails}
           options={screenOptionsHeader}
         />
-
       </SparklesStack.Navigator>
     );
   }
@@ -171,7 +178,7 @@ export default function App() {
 
         <Tab.Screen
           name="Artists"
-          component={SparklesStack}
+          component={ArtistsFeed}
           options={{
             headerShown: false,
           }}
