@@ -1,7 +1,7 @@
 import { Pressable, View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import Bound2 from '../assets/icons/Bound2.svg';
 import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
-import PiechartIcon from '../assets/icons/PiechartIcon.svg';
+import PiechartIcon from '../assets/icons/Piechart.svg';
 import { Colors } from '../assets/themes';
 import { LifeOfPablo, Yeezus, Donda } from '../assets/icons';
 
@@ -13,21 +13,38 @@ export default function NFTDetails({ navigation, route }) {
   const NFTName = route.params.NFTName;
   let NFT = null;
 
-  console.log(color, "color!!!!")
-  console.log(NFTName, "NFTNME!")
-  if (NFTCategory === "Yeezus") {
-    NFT = <Text><Yeezus svgwidth={200} svgheight={400} width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
-  } else if (NFTCategory === "Donda") {
-    NFT = <Text><Donda width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
-  } else if (NFTCategory === "The L") {
-    NFT = <Text><LifeOfPablo width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  console.log(color, 'color!!!!');
+  console.log(NFTName, 'NFTNME!');
+  if (NFTCategory === 'Yeezus') {
+    NFT = (
+      <Text>
+        <Yeezus
+          svgwidth={200}
+          svgheight={400}
+          width={200}
+          fill={color}
+          fillOpacity={0.4}
+          style={style}
+        />
+      </Text>
+    );
+  } else if (NFTCategory === 'Donda') {
+    NFT = (
+      <Text>
+        <Donda width={200} fill={color} fillOpacity={0.4} style={style} />
+      </Text>
+    );
+  } else if (NFTCategory === 'The L') {
+    NFT = (
+      <Text>
+        <LifeOfPablo width={200} fill={color} fillOpacity={0.4} style={style} />
+      </Text>
+    );
   }
 
   return (
     <SafeAreaView style={styles.container}>
-
       <View style={styles.header}>
-
         <Text style={styles.NFTName}>{NFTName}</Text>
 
         {NFT}
@@ -42,7 +59,19 @@ export default function NFTDetails({ navigation, route }) {
         </View>
       </View>
       <View style={styles.footer}>
-        <Pressable onPress={() => navigation.navigate("Artists", { screen: "PurchaseScreen", params: { "color": { color }, "NFTCategory": "Yeezus", "style": { style }, "NFTName": NFTName } })} style={styles.button}>
+        <Pressable
+          onPress={() =>
+            navigation.navigate('Artists', {
+              screen: 'PurchaseScreen',
+              params: {
+                color: { color },
+                NFTCategory: 'Yeezus',
+                style: { style },
+                NFTName: NFTName,
+              },
+            })
+          }
+          style={styles.button}>
           <ShoppingCartIcon />
           <Text style={styles.footerText}>PURCHASE</Text>
         </Pressable>
@@ -65,7 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100
+    marginTop: 100,
   },
   headerTitle: {
     fontSize: 48,
@@ -105,6 +134,6 @@ const styles = StyleSheet.create({
   },
   NFTName: {
     fontSize: 44,
-    fontFamily: 'Dosis_700Bold'
-  }
+    fontFamily: 'Dosis_700Bold',
+  },
 });

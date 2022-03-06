@@ -2,7 +2,7 @@
 	"replaceAttrValues": {
 	  "#000": "{props.fill}",
 	  "#f00": "{props.fillOpacity}",
-      "#00f": "{props.svgheight}"
+      "#00f": "{props.svgheight}",
       "#0f0": "{props.svgwidth}"
 	}
 }

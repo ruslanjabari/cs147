@@ -14,7 +14,7 @@ import Yeezus from './Yeezus.svg';
 import Donda from './Donda.svg';
 import LifeOfPablo from './LifeOfPablo.svg';
 import MusicNoteIcon from './MusicNoteIcon.svg';
-
+import HeartIcon from './HeartIcon.svg';
 export {
   SearchIcon,
   DMIcon,
@@ -32,4 +32,5 @@ export {
   Donda,
   LifeOfPablo,
   MusicNoteIcon,
+  HeartIcon,
 };

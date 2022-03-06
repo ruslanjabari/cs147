@@ -7,16 +7,8 @@ import ArtistsFeed from './screens/ArtistsFeed';
 import HomeFeed from './screens/HomeFeed';
 import ProfileScreen from './screens/ProfileScreen';
 import CommunitiesScreen from './screens/CommunitiesScreen';
-<<<<<<< Updated upstream
+import { ArtistNFTScreen, PurchaseScreen, NFTDetails, SearchScreen } from './screens';
 
-import { ArtistNFTScreen, PurchaseScreen, NFTDetails } from './screens';
-||||||| constructed merge base
-import { ArtistNFTScreen } from './screens';
-
-=======
-import { ArtistNFTScreen } from './screens';
-// import { ArtistsFeed } from './screens/PurchaseScreen';
->>>>>>> Stashed changes
 import {
   SearchIcon,
   DMIcon,
@@ -170,7 +162,7 @@ export default function App() {
         })}>
         <Tab.Screen
           name="Home"
-          component={HomeStack}
+          component={SearchScreen}
           options={{
             headerShown: false,
           }}
