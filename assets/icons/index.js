@@ -17,6 +17,19 @@ import MusicNoteIcon from './MusicNoteIcon.svg';
 import HeartIcon from './HeartIcon.svg';
 import ProfileBlack from './ProfileBlack.svg';
 import Verified from './Verified.svg';
+import Strokes from './Strokes.svg';
+import Drake from './Drake.svg';
+import DSavage from './DSavage.svg';
+import Views from './Views.svg';
+import CLB from './CLB.svg';
+import Scorpion from './Scorpion.svg';
+import Angles from './Angles.svg';
+import RoomOnFire from './RoomOnFire.svg';
+import DPhoenix from './DPhoenix.svg';
+import TrustNoOne from './TrustNoOne.svg';
+import BPL from './BPL.svg';
+import IsThisIt from './IsThisIt.svg';
+
 
 
 export {
@@ -38,5 +51,17 @@ export {
   MusicNoteIcon,
   HeartIcon,
   ProfileBlack,
-  Verified
+  Verified,
+  Strokes,
+  Drake,
+  DSavage,
+  Views,
+  CLB,
+  Scorpion,
+  IsThisIt,
+  Angles,
+  RoomOnFire,
+  DPhoenix,
+  TrustNoOne,
+  BPL
 };

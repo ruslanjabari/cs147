@@ -1,23 +1,40 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Colors } from '../assets/themes';
-import { ProfileBlack, Ye, Verified } from '../assets/icons/';
+import { ProfileBlack, Ye, Verified, Strokes, Drake, DSavage } from '../assets/icons/';
 
-export default function ArtistDetails() {
+const KanyeObj = { artistName: "Kanye West", followers: "1.4M", img: <Ye width={100} height={100} /> }
+const StrokesObj = { artistName: "The Strokes", followers: "6M", img: <Strokes width={100} height={100} /> }
+const DrakeObj = { artistName: "Drake          ", followers: "9M", img: <Drake width={100} height={100} /> }
+const DSavageObj = { artistName: "D. Savage   ", followers: "1M", img: <DSavage width={100} height={100} /> }
+
+export default function ArtistDetails({ artist }) {
+  let details;
+
+  if (artist === "Kanye West") {
+    details = KanyeObj;
+  } else if (artist === "The Strokes") {
+    details = StrokesObj;
+  } else if (artist === "Drake") {
+    details = DrakeObj;
+  } else {
+    details = DSavageObj;
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Ye width={100} height={100} />
+          {details.img}
         </View>
         <View style={styles.headerRight}>
           <View style={styles.headerRightArtistName}>
             <Verified width={30} height={30} />
-            <Text style={styles.artistName}>Kanye West</Text>
+            <Text style={styles.artistName}>{details.artistName}</Text>
           </View>
           <View style={styles.headerRightGroup}>
             <View style={styles.followerIconGroup}>
               <ProfileBlack width={20} />
-              <Text style={styles.artistFollowers}>1.4M</Text>
+              <Text style={styles.artistFollowers}>{details.followers}</Text>
             </View>
             <Pressable style={styles.button}>
               <Text style={styles.buttonText}>FOLLOW</Text>

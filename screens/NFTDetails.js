@@ -15,24 +15,42 @@ export default function NFTDetails({ navigation, route }) {
 
   console.log(color, 'color!!!!');
   console.log(NFTName, 'NFTNME!');
+  const NFTProps = {
+    width: 200,
+    fill: color,
+    fillOpacity: 0.4,
+    style: style
+  }
+
+  // const NFTMapper = {
+  //   "Yeezus": <Text>
+  //     <Yeezus
+  //       width={200}
+  //       fill={color}
+  //       fillOpacity={0.4}
+  //       style={style}
+  //     />
+  //   </Text>,
+  //   "Donda": 
+  // }
+
+  switch (NFTCategory) {
+    case "Yeezus":
+      NFT = <Yeezus {...NFTProps} />;
+      break;
+    case
+  }
+
+
   if (NFTCategory === 'Yeezus') {
     NFT = (
-      <Text>
-        <Yeezus
-          svgwidth={200}
-          svgheight={400}
-          width={200}
-          fill={color}
-          fillOpacity={0.4}
-          style={style}
-        />
-      </Text>
+      <Yeezus
+        {...NFTProps}
+      />
     );
   } else if (NFTCategory === 'Donda') {
     NFT = (
-      <Text>
-        <Donda width={200} fill={color} fillOpacity={0.4} style={style} />
-      </Text>
+      <Donda {...NFTProps} />
     );
   } else if (NFTCategory === 'The L') {
     NFT = (
@@ -61,7 +79,7 @@ export default function NFTDetails({ navigation, route }) {
       <View style={styles.footer}>
         <Pressable
           onPress={() =>
-            navigation.navigate('Artists', {
+            navigation.navigate('EXPLORE', {
               screen: 'PurchaseScreen',
               params: {
                 color: { color },

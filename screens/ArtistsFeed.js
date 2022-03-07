@@ -25,28 +25,28 @@ export default function ArtistsFeed() {
             </View>
 
             <View style={styles.listContainer}>
-                <Pressable onPress={() => null} style={styles.artistInfo}>
+                <Pressable onPress={() => navigation.navigate("EXPLORE", { screen: "ArtistNFTScreen", params: { artist: "The Strokes" } })} style={styles.artistInfo}>
                     <View style={styles.artistInfoGroup}>
-                        <StrokesSVG />
+                        <StrokesSVG style={styles.artistInfo} />
                         <Text style={styles.artistName}>The Strokes</Text>
                     </View>
                     <ForwardIcon />
                 </Pressable>
-                <Pressable onPress={() => navigation.navigate("ArtistNFTScreen")} style={styles.artistInfo}>
+                <Pressable onPress={() => navigation.navigate("EXPLORE", { screen: "ArtistNFTScreen", params: { artist: "Kanye West" } })} style={styles.artistInfo}>
                     <View style={styles.artistInfoGroup}>
                         <YeSVG />
                         <Text style={styles.artistName}>Kanye West</Text>
                     </View>
                     <ForwardIcon />
                 </Pressable>
-                <Pressable style={styles.artistInfo}>
+                <Pressable style={styles.artistInfo} onPress={() => navigation.navigate("EXPLORE", { screen: "ArtistNFTScreen", params: { artist: "Drake" } })}>
                     <View style={styles.artistInfoGroup}>
                         <DrakeSVG />
                         <Text style={styles.artistName}>Drake</Text>
                     </View>
                     <ForwardIcon />
                 </Pressable>
-                <Pressable style={styles.artistInfo}>
+                <Pressable style={styles.artistInfo} onPress={() => navigation.navigate("EXPLORE", { screen: "ArtistNFTScreen", params: { artist: "D. Savage" } })}>
                     <View style={styles.artistInfoGroup}>
                         <DSavageSVG />
                         <Text style={styles.artistName}>D. Savage</Text>
