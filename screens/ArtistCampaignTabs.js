@@ -3,7 +3,6 @@ import { Animated, View, TouchableOpacity, Text, StyleSheet, FlatList, Pressable
 import { Colors } from '../assets/themes';
 import { Bound2, Yeezus, LifeOfPablo, Donda } from '../assets/icons/';
 import React, { useState } from 'react';
-import ArtistNFTScreen from './ArtistNFTScreen';
 import { useNavigation } from '@react-navigation/native';
 
 

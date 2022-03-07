@@ -131,20 +131,34 @@ export default function App() {
     );
   }
 
+  const TabBarLabelStyleActive = {
+    marginTop: 17,
+    fontSize: 12,
+    color: 'white',
+    fontFamily: 'Dosis_700Bold'
+  }
+
+  const TabBarLabelStyleInactive = {
+    marginTop: 17,
+    fontSize: 12,
+    color: "#C4C4C4",
+    fontFamily: 'Dosis_700Bold'
+  }
+
   return (
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
         initialRouteName="HomeStack"
         screenOptions={({ route }) => ({
-          tabBarShowLabel: false,
+
           tabBarIcon: ({ focused }) => {
             let icon;
 
-            if (route.name === 'Home') {
+            if (route.name === 'HOME') {
               icon = focused ? <HomeIconSelected /> : <HomeIconUnselected />;
-            } else if (route.name === 'Artists') {
+            } else if (route.name === 'EXPLORE') {
               icon = focused ? <SparklesIconSelected /> : <SparklesIconUnselected />;
-            } else if (route.name === 'Chat') {
+            } else if (route.name === 'COMMUNITIES') {
               icon = focused ? <ChatIconSelected /> : <ChatIconUnselected />;
             } else {
               icon = focused ? <ProfileIconSelected /> : <ProfileIconUnselected />;
@@ -153,15 +167,33 @@ export default function App() {
             return icon;
           },
           tabBarStyle: {
-            paddingTop: 10,
+            paddingTop: 25,
+            height: 88,
             backgroundColor: 'black',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
+
           },
+          tabBarLabel: ({ focused }) => {
+            let label;
+            switch (route.name) {
+              case 'HOME':
+                return label = focused ? <Text style={TabBarLabelStyleActive}>HOME</Text> : <Text style={TabBarLabelStyleInactive}>HOME</Text>
+              case 'EXPLORE':
+                return label = focused ? <Text style={TabBarLabelStyleActive}>EXPLORE</Text> : <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
+              case 'COMMUNITIES':
+                return label = focused ? <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text> : <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
+              case 'PROFILE':
+                return label = focused ? <Text style={TabBarLabelStyleActive}>PROFILE</Text> : <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
+            }
+            return label
+          }
+
+
         })}>
         <Tab.Screen
-          name="Home"
+          name="HOME"
           component={SearchScreen}
           options={{
             headerShown: false,
@@ -169,15 +201,15 @@ export default function App() {
         />
 
         <Tab.Screen
-          name="Artists"
-          component={ArtistsFeed}
+          name="EXPLORE"
+          component={SparklesStack}
           options={{
             headerShown: false,
           }}
         />
 
         <Tab.Screen
-          name="Chat"
+          name="COMMUNITIES"
           component={ChatStack}
           options={{
             headerShown: false,
@@ -185,7 +217,7 @@ export default function App() {
         />
 
         <Tab.Screen
-          name="Profile"
+          name="PROFILE"
           component={ProfileStack}
           options={{
             headerShown: false,
