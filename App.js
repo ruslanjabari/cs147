@@ -168,7 +168,7 @@ export default function App() {
           },
           tabBarStyle: {
             paddingTop: 25,
-            height: 88,
+            height: '10%',
             backgroundColor: 'black',
             display: 'flex',
             alignItems: 'center',

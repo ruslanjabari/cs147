@@ -10,7 +10,7 @@ const Tab = createMaterialTopTabNavigator();
 
 function customTabNav({ state, descriptors, navigation, position }) {
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: 'row', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', alignItems: '', paddingBottom: 5, marginRight: 30 }}>
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -107,31 +107,42 @@ export default function ArtistCampaignTabs() {
     let NFTName = null;
     let color = item.color;
     let style = styles.nft;
+    let val = null;
 
     if (name === "YEEZUS") {
       NFTName = "BOUND 2 #00" + item.id;
+      val = "7.4 ETH"
       return (
         <Pressable
-          onPress={() => navigation.navigate("Artists", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "Yeezus", "style": { style }, "NFTName": NFTName } })}>
-          <View style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-            <Yeezus style={{ position: 'relative' }} width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} >
-              <Text style={{ zIndex: 2, color: 'black', position: 'absolute', top: 0, left: 0 }}>hi</Text>
-            </Yeezus>
-          </View>
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}
+          onPress={() => navigation.navigate("EXPLORE", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "Yeezus", "style": { style }, "NFTName": NFTName } })}>
+
+          <Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />
+          <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+            {NFTName}
+          </Text>
+          <Text style={{ position: 'absolute', bottom: 15, right: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+            {val}
+          </Text>
+
+
+
 
         </Pressable>);
     } else if (name === "DONDA") {
       NFTName = "DONDA CHANT #00" + item.id;
       return (
         <Pressable
-          onPress={() => navigation.navigate("Artists", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "Donda", "style": { style }, "NFTName": NFTName } })}>
+          onPress={() => navigation.navigate("EXPLORE", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "Donda", "style": { style }, "NFTName": NFTName } })}>
+
           <Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />
+
         </Pressable>);
     } else if (name === "THE L") {
       NFTName = "THE L #00" + item.id;
       return (
         <Pressable
-          onPress={() => navigation.navigate("Artists", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "The L", "style": { style }, "NFTName": NFTName } })}>
+          onPress={() => navigation.navigate("EXPLORE", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": "The L", "style": { style }, "NFTName": NFTName } })}>
           <LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />
         </Pressable>);
     }
@@ -146,7 +157,11 @@ export default function ArtistCampaignTabs() {
   return (
     <>
       <Text style={styles.text}>CAMPAIGNS</Text>
-      <Tab.Navigator tabBar={customTabNav}>
+      <Tab.Navigator
+        ScreenOptions={{
+          tabBarLabelStyle: { fontSize: 200 }
+        }}
+        tabBar={customTabNav}>
         <Tab.Screen
           name="YEEZUS"
 
@@ -162,7 +177,7 @@ export default function ArtistCampaignTabs() {
         </Tab.Screen>
 
         <Tab.Screen
-          name="THE L"
+          name="The L"
 
         >
           {() => <ArtistsNFTs data={data} name={"THE L"} />}
@@ -177,7 +192,8 @@ const styles = StyleSheet.create({
   text: {
     fontFamily: 'Dosis_700Bold',
     fontSize: 18,
-    marginLeft: 55,
+    marginLeft: 30
+
   },
   nft: {
     marginBottom: 10
