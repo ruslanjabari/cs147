@@ -31,6 +31,9 @@ import BPL from './BPL.svg';
 import IsThisIt from './IsThisIt.svg';
 
 
+import Dondalicious from './Dondalicious.svg';
+import DiscordIcon from './DiscordIcon.svg';
+import ForwardIcon from './ForwardIcon.svg';
 
 export {
   SearchIcon,
@@ -64,4 +67,7 @@ export {
   DPhoenix,
   TrustNoOne,
   BPL
+  Dondalicious,
+  DiscordIcon,
+  ForwardIcon,
 };
