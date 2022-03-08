@@ -1,7 +1,7 @@
 import { Pressable, View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import Bound2 from '../assets/icons/Bound2.svg';
 import { Colors } from '../assets/themes';
-import { LifeOfPablo, Yeezus, Donda } from '../assets/icons';
+import { LifeOfPablo, Yeezus, Donda, Views, CLB, Scorpion, IsThisIt, Angles, Room, DPhoenix, TrustNoOne, BPL } from '../assets/icons';
 
 export default function PurchaseScreen({ navigation, route }) {
   const nftObj = route.params.NFT;
@@ -10,17 +10,30 @@ export default function PurchaseScreen({ navigation, route }) {
   const style = route.params.style;
   const NFTName = route.params.NFTName;
 
+  console.log(route.params, "PURCJHASE PARAMS")
 
-
-  let NFT = null;
-
-  if (NFTCategory === "Yeezus") {
-    NFT = <Text><Yeezus width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
-  } else if (NFTCategory === "Donda") {
-    NFT = <Text><Donda width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
-  } else if (NFTCategory === "The L") {
-    NFT = <Text><LifeOfPablo width={200} fill={color} fillOpacity={0.4} style={style} /></Text>
+  const NFTProps = {
+    width: 200,
+    fill: color,
+    fillOpacity: 0.4,
+    style: style,
   }
+
+  const NFTMapper = {
+    "YEEZUS": <Yeezus width={200} height={200} {...NFTProps} />,
+    "DONDA": <Donda {...NFTProps} />,
+    "THE L": <LifeOfPablo {...NFTProps} />,
+    "VIEWS": <Views {...NFTProps} />,
+    "CLB": <CLB {...NFTProps} />,
+    "SCORPION": <Scorpion {...NFTProps} />,
+    "IS THIS IT": <IsThisIt {...NFTProps} />,
+    "ANGLES": <Angles {...NFTProps} />,
+    "ROOM": <Room {...NFTProps} />,
+    "D PHOENIX": <DPhoenix {...NFTProps} />,
+    "TRUST": <TrustNoOne {...NFTProps} />,
+    "BPL": <BPL {...NFTProps} />
+  }
+
 
   return (
     <SafeAreaView style={styles.container}>
@@ -29,15 +42,16 @@ export default function PurchaseScreen({ navigation, route }) {
       </View>
       <View style={styles.body}>
         <View style={styles.NFTDisplay}>
-          {NFT}
+          {NFTMapper[NFTCategory]}
         </View>
 
         <View style={styles.description}>
           <Text style={styles.descriptionText}>
-            You now own BOUND 2 #001 and can access exclusive communities and content with its
+            You now own {NFTName} and can access exclusive communities and content with its
             associated campaign!
           </Text>
         </View>
+
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button}>

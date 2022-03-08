@@ -3,79 +3,68 @@ import Bound2 from '../assets/icons/Bound2.svg';
 import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
 import PiechartIcon from '../assets/icons/Piechart.svg';
 import { Colors } from '../assets/themes';
-import { LifeOfPablo, Yeezus, Donda } from '../assets/icons';
+import { LifeOfPablo, Yeezus, Donda, Views, CLB, Scorpion, IsThisIt, Angles, Room, DPhoenix, TrustNoOne, BPL } from '../assets/icons';
 
 export default function NFTDetails({ navigation, route }) {
-  const nftObj = route.params.NFT;
   const color = route.params.color.color;
-  const NFTCategory = route.params.NFTCategory;
+  const NFTCategory = route.params.albumName.albumName;
   let style = route.params.style;
   const NFTName = route.params.NFTName;
-  let NFT = null;
+  const price = route.params.price;
+  const desc = route.params.desc;
+  console.log(route.params, "MY PARAMS")
 
-  console.log(color, 'color!!!!');
-  console.log(NFTName, 'NFTNME!');
   const NFTProps = {
     width: 200,
     fill: color,
     fillOpacity: 0.4,
-    style: style
+    style: style,
   }
 
-  // const NFTMapper = {
-  //   "Yeezus": <Text>
-  //     <Yeezus
-  //       width={200}
-  //       fill={color}
-  //       fillOpacity={0.4}
-  //       style={style}
-  //     />
-  //   </Text>,
-  //   "Donda": 
-  // }
-
-  switch (NFTCategory) {
-    case "Yeezus":
-      NFT = <Yeezus {...NFTProps} />;
-      break;
-    case
+  const NFTMapper = {
+    "YEEZUS": <Yeezus {...NFTProps} />,
+    "DONDA": <Donda {...NFTProps} />,
+    "THE L": <LifeOfPablo {...NFTProps} />,
+    "VIEWS": <Views {...NFTProps} />,
+    "CLB": <CLB {...NFTProps} />,
+    "SCORPION": <Scorpion {...NFTProps} />,
+    "IS THIS IT": <IsThisIt {...NFTProps} />,
+    "ANGLES": <Angles {...NFTProps} />,
+    "ROOM": <Room {...NFTProps} />,
+    "D PHOENIX": <DPhoenix {...NFTProps} />,
+    "TRUST": <TrustNoOne {...NFTProps} />,
+    "BPL": <BPL {...NFTProps} />
   }
 
-
-  if (NFTCategory === 'Yeezus') {
-    NFT = (
-      <Yeezus
-        {...NFTProps}
-      />
-    );
-  } else if (NFTCategory === 'Donda') {
-    NFT = (
-      <Donda {...NFTProps} />
-    );
-  } else if (NFTCategory === 'The L') {
-    NFT = (
-      <Text>
-        <LifeOfPablo width={200} fill={color} fillOpacity={0.4} style={style} />
-      </Text>
-    );
-  }
-
+  console.log(NFTCategory, "THIS THE NFT CATEGORY")
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.NFTName}>{NFTName}</Text>
 
-        {NFT}
       </View>
       <View style={styles.body}>
-        <Text>{nftObj}</Text>
+
+        <View
+          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}
+          onPress={() => navigation.navigate("EXPLORE", { screen: "NFTDetails", params: { "color": { color }, "albumName": { albumName }, "style": { style }, "NFTName": NFTName, "price": val } })}>
+
+          {NFTMapper[NFTCategory]}
+          <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+            {NFTName}
+          </Text>
+          <Text style={{ position: 'absolute', bottom: 15, right: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+            {price}
+          </Text>
+        </View>
         <View style={styles.description}>
           <Text style={styles.descriptionText}>
-            Having been vocal about it for years, Ye is donating 10% of proceeds to the “Free Larry
-            Hoover” campaign
+            {desc}
           </Text>
         </View>
       </View>
+
+
       <View style={styles.footer}>
         <Pressable
           onPress={() =>
@@ -83,7 +72,7 @@ export default function NFTDetails({ navigation, route }) {
               screen: 'PurchaseScreen',
               params: {
                 color: { color },
-                NFTCategory: 'Yeezus',
+                NFTCategory: NFTCategory,
                 style: { style },
                 NFTName: NFTName,
               },
@@ -98,7 +87,7 @@ export default function NFTDetails({ navigation, route }) {
           <Text style={styles.footerText}>ANALYTICS</Text>
         </Pressable>
       </View>
-    </SafeAreaView>
+    </SafeAreaView >
   );
 }
 
@@ -112,7 +101,8 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    marginTop: 100,
+    marginTop: -15,
+
   },
   headerTitle: {
     fontSize: 48,
@@ -120,19 +110,29 @@ const styles = StyleSheet.create({
   },
   body: {
     flex: 3,
+    alignItems: 'center',
+    justifyContent: 'flex-start',
+    marginTop: -15
+
+
   },
   description: {
     width: '100%',
     alignItems: 'center',
-    padding: 40,
+    paddingRight: 40,
+    paddingLeft: 40,
+
   },
   descriptionText: {
     fontSize: 24,
     fontFamily: 'Dosis_400Regular',
+    marginTop: 5
   },
   footer: {
     flex: 1,
     alignItems: 'center',
+    justifyContent: 'flex-start',
+
   },
   button: {
     backgroundColor: Colors.black,
@@ -153,5 +153,6 @@ const styles = StyleSheet.create({
   NFTName: {
     fontSize: 44,
     fontFamily: 'Dosis_700Bold',
+
   },
 });

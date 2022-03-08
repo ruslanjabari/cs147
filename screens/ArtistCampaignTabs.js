@@ -18,6 +18,21 @@ import { useNavigation } from '@react-navigation/native';
 
 const Tab = createMaterialTopTabNavigator();
 
+const CampaignDescriptions = {
+  "YEEZUS": 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+  "DONDA": 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+  "THE L": 'Ye is donating 5% of proceeds to Blue Star Moms',
+  "VIEWS": 'Drake is donating 1% of proceeds to CARE charity',
+  "CLB": 'Drake is donating 8% of proceeds to the Wounded Warrior Project',
+  "SCORPION": 'Drake is donating 10% of proceeds to "Save the Children"',
+  "IS THIS IT": "The Strokes are donating 5% of proceeds to St. Jude Children's Research Hospital",
+  "ANGLES": 'The Strokes are donating 7% of proceeds to Smile Train Charity',
+  "ROOM": 'The Strokes are donating 15% of proceeds to the International Rescue Committee',
+  "D PHOENIX": 'D. Savage is donating 10% of proceeds to Camp Kesem',
+  "TRUST": 'D. Savage is donating 12% of proceeds to Stanford',
+  "BPL": 'D. Savage is donating 15% of proceeds to Heifer International'
+}
+
 function customTabNav({ state, descriptors, navigation, position }) {
   return (
     <View style={{ flexDirection: 'row', display: 'flex', justifyContent: 'flex-start', alignContent: 'center', alignItems: '', paddingBottom: 5, marginRight: 30 }}>
@@ -130,10 +145,12 @@ export default function ArtistCampaignTabs({ artist }) {
   ]);
 
   function NFTImage({ NFTName, color, val, style, NFT, albumName }) {
+    console.log("albumNAME", albumName);
+
     return (
       <Pressable
         style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}
-        onPress={() => navigation.navigate("EXPLORE", { screen: "NFTDetails", params: { "color": { color }, "NFTCategory": {albumName}, "style": { style }, "NFTName": NFTName } })}>
+        onPress={() => navigation.navigate("EXPLORE", { screen: "NFTDetails", params: { "color": { color }, "albumName": { albumName }, "style": { style }, "NFTName": NFTName, "price": val, desc: CampaignDescriptions[albumName] } })}>
 
         {NFT}
         <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
@@ -147,60 +164,74 @@ export default function ArtistCampaignTabs({ artist }) {
   }
 
   function renderItem({ item }, props) {
+    console.log(props, "THIS THOSE PROPS")
     let name = props.name;
     let NFTName = null;
     let color = item.color;
     let style = styles.nft;
     let val = null;
+    let albumName = null;
 
     if (name === "YEEZUS") {
       NFTName = "BOUND 2 #00" + item.id;
       val = "7.4 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Yeezus width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "YEEZUS" + "";
+      return <NFTImage NFTName={NFTName} albumName={name} color={color} val={val} style={style} NFT={<Yeezus width={200} fill={item.color} fillOpacity={0.4} />} />;
 
     } else if (name === "DONDA") {
       NFTName = "Jail #00" + item.id;
       val = "7.2 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Donda width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "DONDA" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Donda width={200} fill={item.color} fillOpacity={0.4} />} albumName={name} />;
     } else if (name === "THE L") {
       NFTName = "Famous #00" + item.id;
       val = "7.1 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
+      name = "THE L" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<LifeOfPablo width={200} fill={item.color} fillOpacity={0.4} />} albumName={name} />;
     } else if (name === "VIEWS") {
       NFTName = "Hype #00" + item.id;
       val = "6.8 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Views width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "VIEWS" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Views width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "CLB      ") {
       NFTName = "IMY2 #00" + item.id;
       val = "9.1 ETH"
+      name = "CLB" + "";
       return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<CLB width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "SCORPION") {
       NFTName = "Elevate #00" + item.id;
       val = "7.1 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Scorpion width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "SCORPION" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Scorpion width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "IS THIS IT") {
       NFTName = "Soma #00" + item.id;
       val = "3.2 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<IsThisIt width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "IS THIS IT" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<IsThisIt width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "ANGLES") {
       NFTName = "Games #00" + item.id;
       val = "2.9 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Angles width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "ANGLES" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<Angles width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "ROOM") {
       NFTName = "12:51 #00" + item.id;
       val = "2.7 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<RoomOnFire width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "ROOM" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<RoomOnFire width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "D PHOENIX") {
       NFTName = "Opera #00" + item.id;
       val = "1.1 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<DPhoenix width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "D PHOENIX" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<DPhoenix width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "TRUST") {
       NFTName = "Wytd #00" + item.id;
       val = "1.5 ETH"
-      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<TrustNoOne width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} albumName={name} />} />;
+      name = "TRUST" + "";
+      return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<TrustNoOne width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     } else if (name === "BPL") {
       NFTName = "Runtz #00" + item.id;
       val = "1.8 ETH"
+      name = "BPL" + "";
       return <NFTImage NFTName={NFTName} color={color} val={val} style={style} NFT={<BPL width={200} fill={item.color} fillOpacity={0.4} style={styles.nft} />} albumName={name} />;
     }
   }

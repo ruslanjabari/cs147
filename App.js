@@ -144,7 +144,7 @@ export default function App() {
     color: "#C4C4C4",
     fontFamily: 'Dosis_700Bold'
   }
-
+  console.disableYellowBox = true;
   return (
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
