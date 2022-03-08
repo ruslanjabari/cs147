@@ -6,8 +6,15 @@ import AppLoading from 'expo-app-loading';
 import ArtistsFeed from './screens/ArtistsFeed';
 import HomeFeed from './screens/HomeFeed';
 import ProfileScreen from './screens/ProfileScreen';
-import CommunitiesScreen from './screens/CommunitiesScreen';
-import { ArtistNFTScreen, PurchaseScreen, NFTDetails, SearchScreen } from './screens';
+import {
+  ArtistNFTScreen,
+  PurchaseScreen,
+  NFTDetails,
+  SearchScreen,
+  JoinCommunitiesScreen,
+  CommunitiesScreen,
+  IndividualCommunityScreen,
+} from './screens';
 
 import {
   SearchIcon,
@@ -111,7 +118,7 @@ export default function App() {
       <ChatStack.Navigator initialRouteName="CommunitiesScreen" screenOptions={{ title: null }}>
         <ChatStack.Screen
           name="CommunitiesScreen"
-          component={CommunitiesScreen}
+          component={IndividualCommunityScreen}
           options={screenOptionsHeader}
         />
       </ChatStack.Navigator>
@@ -135,22 +142,21 @@ export default function App() {
     marginTop: 17,
     fontSize: 12,
     color: 'white',
-    fontFamily: 'Dosis_700Bold'
-  }
+    fontFamily: 'Dosis_700Bold',
+  };
 
   const TabBarLabelStyleInactive = {
     marginTop: 17,
     fontSize: 12,
-    color: "#C4C4C4",
-    fontFamily: 'Dosis_700Bold'
-  }
+    color: '#C4C4C4',
+    fontFamily: 'Dosis_700Bold',
+  };
 
   return (
     <NavigationContainer theme={navTheme}>
       <Tab.Navigator
         initialRouteName="HomeStack"
         screenOptions={({ route }) => ({
-
           tabBarIcon: ({ focused }) => {
             let icon;
 
@@ -173,24 +179,37 @@ export default function App() {
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-
           },
           tabBarLabel: ({ focused }) => {
             let label;
             switch (route.name) {
               case 'HOME':
-                return label = focused ? <Text style={TabBarLabelStyleActive}>HOME</Text> : <Text style={TabBarLabelStyleInactive}>HOME</Text>
+                return (label = focused ? (
+                  <Text style={TabBarLabelStyleActive}>HOME</Text>
+                ) : (
+                  <Text style={TabBarLabelStyleInactive}>HOME</Text>
+                ));
               case 'EXPLORE':
-                return label = focused ? <Text style={TabBarLabelStyleActive}>EXPLORE</Text> : <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
+                return (label = focused ? (
+                  <Text style={TabBarLabelStyleActive}>EXPLORE</Text>
+                ) : (
+                  <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
+                ));
               case 'COMMUNITIES':
-                return label = focused ? <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text> : <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
+                return (label = focused ? (
+                  <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text>
+                ) : (
+                  <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
+                ));
               case 'PROFILE':
-                return label = focused ? <Text style={TabBarLabelStyleActive}>PROFILE</Text> : <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
+                return (label = focused ? (
+                  <Text style={TabBarLabelStyleActive}>PROFILE</Text>
+                ) : (
+                  <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
+                ));
             }
-            return label
-          }
-
-
+            return label;
+          },
         })}>
         <Tab.Screen
           name="HOME"

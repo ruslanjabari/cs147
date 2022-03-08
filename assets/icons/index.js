@@ -15,6 +15,10 @@ import Donda from './Donda.svg';
 import LifeOfPablo from './LifeOfPablo.svg';
 import MusicNoteIcon from './MusicNoteIcon.svg';
 import HeartIcon from './HeartIcon.svg';
+import Dondalicious from './Dondalicious.svg';
+import DiscordIcon from './DiscordIcon.svg';
+import ForwardIcon from './ForwardIcon.svg';
+
 export {
   SearchIcon,
   DMIcon,
@@ -33,4 +37,7 @@ export {
   LifeOfPablo,
   MusicNoteIcon,
   HeartIcon,
+  Dondalicious,
+  DiscordIcon,
+  ForwardIcon,
 };
