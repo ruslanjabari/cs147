@@ -1,11 +1,13 @@
 import React from 'react';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
-import { ProfileIconUnselected, MusicNoteIcon, HeartIcon } from '../assets/icons/';
+import { ProfileIconUnselected, MusicNoteIcon, HeartIcon, Dondalicious } from '../assets/icons/';
 import { Colors } from '../assets/themes';
+import PressableNFTImage from './PressableNFTImage';
 
 export default function Post(props) {
-  const { user, action, item, image = null, likes, artist, time } = props.item;
+  const { user, action, item, likes, artist, time, NFTDetails } = props.item;
   const [liked, setLiked] = React.useState(false);
+
   return (
     <View style={styles.post}>
       <View style={styles.postHeader}>
@@ -13,15 +15,18 @@ export default function Post(props) {
           {action === 'purchased' ? <ProfileIconUnselected /> : <MusicNoteIcon />}
         </View>
         <View style={styles.postInfoContainer}>
-          <Text style={styles.userName}>{user}</Text>
+
           <Text style={styles.postInfo}>
+            <Text style={styles.userName}>{user}</Text>
             {action === 'purchased'
-              ? `just purchased "${item}" by ${artist}`
-              : `just launched the "${item}" campaign`}
+              ? ` just purchased "${item}" by ${artist}!`
+              : ` just launched the "${item}" campaign!`}
           </Text>
         </View>
       </View>
-      <View style={styles.postImage}></View>
+      <View style={styles.postImage}>
+        {NFTDetails ? <PressableNFTImage NFTDetails={NFTDetails} /> : <Dondalicious />}
+      </View>
       <View style={styles.postFooter}>
         <View style={styles.timestampContainer}>
           <Text style={styles.timestamp}>{time}</Text>
@@ -50,6 +55,11 @@ const styles = StyleSheet.create({
   },
   postInfoContainer: {
     flexDirection: 'row',
+    paddingRight: 10,
+    paddingLeft: 30,
+    paddingBottom: 30,
+    flex: 1,
+    flexWrap: 'wrap'
   },
   userName: {
     fontSize: 22,
@@ -67,4 +77,10 @@ const styles = StyleSheet.create({
   postFooterIcons: {
     flexDirection: 'row',
   },
+  postImage: {
+    alignItems: 'center'
+  },
+  nft: {
+    marginBottom: 10
+  }
 });

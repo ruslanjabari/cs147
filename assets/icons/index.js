@@ -24,7 +24,7 @@ import Views from './Views.svg';
 import CLB from './CLB.svg';
 import Scorpion from './Scorpion.svg';
 import Angles from './Angles.svg';
-import RoomOnFire from './RoomOnFire.svg';
+import Room from './RoomOnFire.svg';
 import DPhoenix from './DPhoenix.svg';
 import TrustNoOne from './TrustNoOne.svg';
 import BPL from './BPL.svg';
@@ -63,10 +63,10 @@ export {
   Scorpion,
   IsThisIt,
   Angles,
-  RoomOnFire,
+  Room,
   DPhoenix,
   TrustNoOne,
-  BPL
+  BPL,
   Dondalicious,
   DiscordIcon,
   ForwardIcon,

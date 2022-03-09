@@ -4,7 +4,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import ArtistsFeed from './screens/ArtistsFeed';
-import HomeFeed from './screens/HomeFeed';
 import ProfileScreen from './screens/ProfileScreen';
 import {
   ArtistNFTScreen,
@@ -14,6 +13,7 @@ import {
   JoinCommunitiesScreen,
   CommunitiesScreen,
   IndividualCommunityScreen,
+  HomeFeed
 } from './screens';
 
 import {
@@ -77,7 +77,8 @@ export default function App() {
 
     return (
       <HomeStack.Navigator initialRouteName="HomeFeed" screenOptions={{ title: null }}>
-        <HomeStack.Screen name="HomeFeed" component={HomeFeed} options={screenOptionsHeader} />
+        <HomeStack.Screen name="HomeScreen" component={HomeFeed} options={screenOptionsHeader} />
+
       </HomeStack.Navigator>
     );
   }
@@ -213,7 +214,7 @@ export default function App() {
         })}>
         <Tab.Screen
           name="HOME"
-          component={SearchScreen}
+          component={HomeStack}
           options={{
             headerShown: false,
           }}
