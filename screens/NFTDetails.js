@@ -1,4 +1,4 @@
-import { Pressable, View, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { Pressable, View, SafeAreaView, StyleSheet, Text, Alert } from 'react-native';
 import Bound2 from '../assets/icons/Bound2.svg';
 import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
 import PiechartIcon from '../assets/icons/Piechart.svg';
@@ -7,10 +7,12 @@ import { PressableNFTImage } from '../components';
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 import { NFTsContext } from '../assets/contextProviders/NFTsProvider';
 import React, { useState, useContext } from 'react';
+import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
 export default function NFTDetails({ navigation, route }) {
   const [userDetails, setUserDetails] = useContext(UserDetailsContext);
-  const [NFTs, setNFTs] = useContext(NFTsContext);
+  // const [NFTs, setNFTs] = useContext(NFTsContext);
+  const [homeFeed, setHomeFeed] = useContext(HomeFeedContext);
   let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = route.params;
   let artistName = () => artist;
 
@@ -18,82 +20,125 @@ export default function NFTDetails({ navigation, route }) {
 
   if (purchasedNFTsFromArtist.includes(route.params) || route.params.sold) {
     sold = true;
-
   }
 
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <Text style={styles.NFTName}>{NFTName}</Text>
-
       </View>
       <View style={styles.body}>
-
         <View
-          style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}
-        >
-
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'relative',
+          }}>
           <PressableNFTImage NFTDetails={route.params} />
-          {!sold &&
+          {!sold && (
             <>
-              <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+              <Text
+                style={{
+                  position: 'absolute',
+                  top: 10,
+                  left: 40,
+                  color: 'white',
+                  fontFamily: 'Dosis_700Bold',
+                  fontSize: 16,
+                }}>
                 {NFTName}
               </Text>
-              <Text style={{ position: 'absolute', bottom: 15, right: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+              <Text
+                style={{
+                  position: 'absolute',
+                  bottom: 15,
+                  right: 40,
+                  color: 'white',
+                  fontFamily: 'Dosis_700Bold',
+                  fontSize: 16,
+                }}>
                 {val}
               </Text>
             </>
-          }
-
-
-
+          )}
         </View>
         <View style={styles.description}>
-          <Text style={styles.descriptionText}>
-            {desc}
-          </Text>
+          <Text style={styles.descriptionText}>{desc}</Text>
         </View>
       </View>
 
-
       <View style={styles.footer}>
-        {!sold ?
+        {!sold ? (
           <Pressable
             onPress={(artist) => {
-              navigation.navigate('EXPLORE', {
-                screen: 'PurchaseScreen',
-                params: route.params
-              });
+              Alert.alert('Confirm Purchase', 'Are you sure you want to purchase this NFT?', [
+                {
+                  text: 'Cancel',
+                  onPress: () => { },
+                  style: 'cancel',
+                },
+                {
+                  text: 'Confirm',
+                  onPress: () => {
+                    navigation.navigate('EXPLORE', {
+                      screen: 'PurchaseScreen',
+                      params: route.params,
+                    });
+                    // hard coded
+                    setHomeFeed([
+                      {
+                        user: 'NPCUser42',
+                        action: 'purchased',
+                        item: NFTName,
+                        likes: 1,
+                        liked: false, // hacky, you like your own
+                        artist: artist,
+                        time: 'Just now',
+                        NFTDetails: {
+                          NFTName: NFTName,
+                          albumName: albumName,
+                          color: color,
+                          val: val,
+                          width: width,
+                          showInfo: showInfo,
+                          desc: desc,
+                          artist: artist,
+                          sold: sold,
+                        },
+                      },
+                      ...homeFeed,
+                    ]);
 
-              let oldArtistNFTs = userDetails["purchasedNFTs"][[artistName()]];
-              let newArtistNFTs = [...oldArtistNFTs, route.params];
+                    let oldArtistNFTs = userDetails['purchasedNFTs'][[artistName()]];
+                    let newArtistNFTs = [...oldArtistNFTs, route.params];
 
-
-              setUserDetails({
-                ...userDetails, "purchasedNFTs": {
-                  ...userDetails["purchasedNFTs"], [artistName()]: newArtistNFTs
-                }
-
-              });
-            }
-            }
+                    setUserDetails({
+                      ...userDetails,
+                      purchasedNFTs: {
+                        ...userDetails['purchasedNFTs'],
+                        [artistName()]: newArtistNFTs,
+                      },
+                    });
+                  },
+                },
+              ]);
+            }}
             style={styles.button}>
             <ShoppingCartIcon />
             <Text style={styles.footerText}>PURCHASE</Text>
           </Pressable>
-          :
-          <View
-            style={styles.button}>
-
-            <Text style={styles.footerText}>SOLD</Text>
-          </View>
-        }
+        ) : (
+            <View style={styles.button}>
+              <Text style={styles.footerText}>PURCHASED</Text>
+            </View>
+          )}
         <Pressable style={styles.button}>
           <PiechartIcon />
           <Text style={styles.footerText}>ANALYTICS</Text>
         </Pressable>
       </View>
-    </SafeAreaView >
+    </SafeAreaView>
   );
 }
 
@@ -108,7 +153,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: -15,
-
   },
   headerTitle: {
     fontSize: 48,
@@ -118,27 +162,23 @@ const styles = StyleSheet.create({
     flex: 3,
     alignItems: 'center',
     justifyContent: 'flex-start',
-    marginTop: -15
-
-
+    marginTop: -15,
   },
   description: {
     width: '100%',
     alignItems: 'center',
     paddingRight: 40,
     paddingLeft: 40,
-
   },
   descriptionText: {
     fontSize: 24,
     fontFamily: 'Dosis_400Regular',
-    marginTop: 5
+    marginTop: 5,
   },
   footer: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'flex-start',
-
   },
   button: {
     backgroundColor: Colors.black,
@@ -159,6 +199,5 @@ const styles = StyleSheet.create({
   NFTName: {
     fontSize: 44,
     fontFamily: 'Dosis_700Bold',
-
   },
 });

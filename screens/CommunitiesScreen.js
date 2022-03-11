@@ -35,7 +35,11 @@ export default function CommunitiesScreen() {
         sliderWidth={400}
         itemWidth={400}
       />
-      <Pressable style={styles.button} onPress={() => navigation.navigate("COMMUNITIES", { screen: "JoinCommunitiesScreen", params: {} })}>
+      <Pressable
+        style={styles.button}
+        onPress={() =>
+          navigation.navigate('COMMUNITIES', { screen: 'JoinCommunitiesScreen', params: {} })
+        }>
         <Text style={styles.buttonText}>Join New Communities</Text>
       </Pressable>
     </SafeAreaView>

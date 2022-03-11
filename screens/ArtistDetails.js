@@ -1,20 +1,41 @@
+import { useContext, useState } from 'react';
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Colors } from '../assets/themes';
 import { ProfileBlack, Ye, Verified, Strokes, Drake, DSavage } from '../assets/icons/';
 
-const KanyeObj = { artistName: "Kanye West", followers: "1.4M", img: <Ye width={100} height={100} /> }
-const StrokesObj = { artistName: "The Strokes", followers: "6M", img: <Strokes width={100} height={100} /> }
-const DrakeObj = { artistName: "Drake          ", followers: "9M", img: <Drake width={100} height={100} /> }
-const DSavageObj = { artistName: "D. Savage   ", followers: "1M", img: <DSavage width={100} height={100} /> }
+const KanyeObj = {
+  artistName: 'Kanye West',
+  followers: '1.4M',
+  img: <Ye width={100} height={100} />,
+};
+const StrokesObj = {
+  artistName: 'The Strokes',
+  followers: '6M',
+  img: <Strokes width={100} height={100} />,
+};
+const DrakeObj = {
+  artistName: 'Drake          ',
+  followers: '4M',
+  img: <Drake width={100} height={100} />,
+};
+const DSavageObj = {
+  artistName: 'D. Savage   ',
+  followers: '1M',
+  img: <DSavage width={100} height={100} />,
+};
+
+import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 
 export default function ArtistDetails({ artist }) {
+  let [userDetails, setUserDetails] = useContext(UserDetailsContext);
+  let [follow, setFollow] = useState(!userDetails.following.includes(artist));
   let details;
 
-  if (artist === "Kanye West") {
+  if (artist === 'Kanye West') {
     details = KanyeObj;
-  } else if (artist === "The Strokes") {
+  } else if (artist === 'The Strokes') {
     details = StrokesObj;
-  } else if (artist === "Drake") {
+  } else if (artist === 'Drake') {
     details = DrakeObj;
   } else {
     details = DSavageObj;
@@ -23,9 +44,7 @@ export default function ArtistDetails({ artist }) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <View style={styles.headerLeft}>
-          {details.img}
-        </View>
+        <View style={styles.headerLeft}>{details.img}</View>
         <View style={styles.headerRight}>
           <View style={styles.headerRightArtistName}>
             <Verified width={30} height={30} />
@@ -36,8 +55,21 @@ export default function ArtistDetails({ artist }) {
               <ProfileBlack width={20} />
               <Text style={styles.artistFollowers}>{details.followers}</Text>
             </View>
-            <Pressable style={styles.button}>
-              <Text style={styles.buttonText}>FOLLOW</Text>
+            <Pressable
+              style={styles.button}
+              onPress={() => {
+                if (!userDetails.following.includes(artist)) {
+                  setUserDetails({ ...userDetails, ...userDetails['following'].push(artist) });
+                  setFollow(true);
+                } else {
+                  setUserDetails({
+                    ...userDetails,
+                    ...userDetails['following'].splice(userDetails['following'].indexOf(artist), 1),
+                  });
+                  setFollow(false);
+                }
+              }}>
+              <Text style={styles.buttonText}>{follow ? 'FOLLOW' : 'UNFOLLOW'}</Text>
             </Pressable>
           </View>
         </View>
@@ -49,7 +81,7 @@ export default function ArtistDetails({ artist }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingBottom: 30
+    paddingBottom: 30,
   },
   header: {
     flexDirection: 'row',
@@ -64,12 +96,11 @@ const styles = StyleSheet.create({
   artistName: {
     fontSize: 40,
     fontFamily: 'Dosis_700Bold',
-    marginLeft: 5
+    marginLeft: 5,
   },
   headerRight: {
     display: 'flex',
     alignContent: 'space-around',
-
 
     // width: '70%',
   },
@@ -77,7 +108,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
 
     justifyContent: 'space-between',
-
   },
   button: {
     backgroundColor: Colors.black,
@@ -108,6 +138,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'center',
-
-  }
+  },
 });

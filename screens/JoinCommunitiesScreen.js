@@ -1,7 +1,10 @@
 // TASK 3 S3
 
+import { useContext } from 'react';
+
 import { SafeAreaView, View, FlatList, Pressable, Text, StyleSheet } from 'react-native';
 import { Dondalicious } from '../assets/icons';
+import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 
 const Elem = (props) => (
   <Pressable onPress={() => alert('navigate!')} style={styles.button}>
@@ -19,6 +22,7 @@ const renderItem = ({ item }) => (
 );
 
 export default function JoinCommunitiesScreen() {
+  const data = useContext(UserDetailsContext)['potentialCommunities'] || [];
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -27,9 +31,9 @@ export default function JoinCommunitiesScreen() {
       </View>
       <FlatList
         style={styles.flatList}
-        data={[1, 2]}
+        data={data}
         renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
       />
     </SafeAreaView>
   );
