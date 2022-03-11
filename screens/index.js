@@ -8,6 +8,7 @@ import IndividualCommunityScreen from './IndividualCommunityScreen';
 import HomeFeed from './HomeFeed';
 import OtherProfileScreen from './OtherProfileScreen';
 import JoinIndividualCommunityScreen from './JoinIndividualCommunityScreen';
+import FinalJoinCommunitiesScreen from './FinalJoinCommunitiesScreen.js';
 
 export {
   ArtistNFTScreen,
@@ -19,5 +20,6 @@ export {
   IndividualCommunityScreen,
   HomeFeed,
   OtherProfileScreen,
-  JoinIndividualCommunityScreen
+  JoinIndividualCommunityScreen,
+  FinalJoinCommunitiesScreen
 };

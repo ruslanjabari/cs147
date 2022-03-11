@@ -67,9 +67,6 @@ export default function PressableNFTImage({ NFTDetails, isCampaign }) {
     let destScreen;
     let parentNav;
 
-    isCampaign = true;
-
-
     if (isCampaign) {
         parentNav = "COMMUNITIES"
         destScreen = "IndividualCommunityScreen"

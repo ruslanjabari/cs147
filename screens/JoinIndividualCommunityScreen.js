@@ -2,6 +2,7 @@ import { Pressable, View, SafeAreaView, StyleSheet, Text, Alert } from 'react-na
 import Bound2 from '../assets/icons/Bound2.svg';
 import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
 import PiechartIcon from '../assets/icons/Piechart.svg';
+import { useNavigation } from '@react-navigation/native';
 
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 import { Colors } from '../assets/themes';
@@ -10,8 +11,9 @@ import { NFTsContext } from '../assets/contextProviders/NFTsProvider';
 import React, { useState, useContext } from 'react';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
-export default function JoinIndividualCommunityScreen({ navigation, route }) {
+export default function JoinIndividualCommunityScreen({ route }) {
     const [userDetails, setUserDetails] = useContext(UserDetailsContext);
+    let navigation = useNavigation();
 
     let communityObj = {
         NFTName: "DSavCenter",
@@ -59,10 +61,10 @@ export default function JoinIndividualCommunityScreen({ navigation, route }) {
                             {
                                 text: 'Confirm',
                                 onPress: () => {
-                                    // navigation.navigate('COMMUNITIES', {
-                                    //     screen: 'JoinedCommunityScreen',
-                                    //     params: route.params,
-                                    // });
+                                    navigation.navigate('COMMUNITIES', {
+                                        screen: 'FinalJoinCommunitiesScreen',
+                                        params: route.params,
+                                    });
 
                                     setUserDetails({ ...userDetails, "joinedCommunities": [...userDetails["joinedCommunities"], NFTName] })
 
