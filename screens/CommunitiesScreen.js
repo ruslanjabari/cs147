@@ -8,19 +8,21 @@ import Carousel from 'react-native-snap-carousel';
 import { Dondalicious, ProfileIconUnselected } from '../assets/icons';
 import { Colors } from '../assets/themes';
 
-const communityComponent = (item) => (
-  <View style={styles.communityComponentContainer}>
-    <Pressable onPress={() => alert('navigate')} style={styles.communityComponent}>
-      {item}
-      {/* ^ pass in */}
-    </Pressable>
-    <Text style={styles.communityText}>101,042 Members</Text>
-  </View>
-);
+const communityComponent = (props) => {
+  return (
+    <View style={styles.communityComponentContainer}>
+      <Pressable onPress={() => {}} style={styles.communityComponent}>
+        {/* ^ pass in */}
+        <Dondalicious />
+      </Pressable>
+      <Text style={styles.communityText}>101,042 Members</Text>
+    </View>
+  );
+};
 
 export default function CommunitiesScreen() {
   let navigation = useNavigation();
-  const [data, setData] = useState([]);
+  const [data, setData] = useState([1, 2]);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -35,13 +37,15 @@ export default function CommunitiesScreen() {
         sliderWidth={400}
         itemWidth={400}
       />
-      <Pressable
-        style={styles.button}
-        onPress={() =>
-          navigation.navigate('COMMUNITIES', { screen: 'JoinCommunitiesScreen', params: {} })
-        }>
-        <Text style={styles.buttonText}>Join New Communities</Text>
-      </Pressable>
+      <View style={{ flex: 1 }}>
+        <Pressable
+          style={styles.button}
+          onPress={() =>
+            navigation.navigate('COMMUNITIES', { screen: 'JoinCommunitiesScreen', params: {} })
+          }>
+          <Text style={styles.buttonText}>Join New Communities</Text>
+        </Pressable>
+      </View>
     </SafeAreaView>
   );
 }
@@ -76,10 +80,10 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: Colors.black,
-    margin: 5,
+    padding: 10,
     borderRadius: 20,
-    height: '15%',
-    width: '55%',
+    // height: '15%',
+    width: '60%',
     justifyContent: 'center',
     alignItems: 'center',
   },
