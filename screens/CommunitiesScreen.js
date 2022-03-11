@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 // TASK 3 S2
-
+import { useNavigation } from '@react-navigation/native';
 import { View, Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
@@ -11,7 +11,7 @@ import { Colors } from '../assets/themes';
 const communityComponent = (item) => (
   <View style={styles.communityComponentContainer}>
     <Pressable onPress={() => alert('navigate')} style={styles.communityComponent}>
-      <Dondalicious />
+      {item}
       {/* ^ pass in */}
     </Pressable>
     <Text style={styles.communityText}>101,042 Members</Text>
@@ -19,6 +19,9 @@ const communityComponent = (item) => (
 );
 
 export default function CommunitiesScreen() {
+  let navigation = useNavigation();
+  const [data, setData] = useState([]);
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -27,12 +30,12 @@ export default function CommunitiesScreen() {
       </View>
       <Carousel
         layout={'default'}
-        data={[1, 1]}
+        data={data}
         renderItem={communityComponent}
         sliderWidth={400}
         itemWidth={400}
       />
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={() => navigation.navigate("COMMUNITIES", { screen: "JoinCommunitiesScreen", params: {} })}>
         <Text style={styles.buttonText}>Join New Communities</Text>
       </Pressable>
     </SafeAreaView>

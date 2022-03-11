@@ -1,19 +1,24 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Pressable } from 'react-native';
 import { NavigationContainer, DefaultTheme } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { useFonts } from 'expo-font';
 import AppLoading from 'expo-app-loading';
 import ArtistsFeed from './screens/ArtistsFeed';
 import ProfileScreen from './screens/ProfileScreen';
+import UserDetailsProvider from './assets/contextProviders/UserDetailsProvider';
+import HomeFeedProvider from './assets/contextProviders/HomeFeedProvider';
+import NFTsProvider from './assets/contextProviders/NFTsProvider';
+
 import {
   ArtistNFTScreen,
   PurchaseScreen,
   NFTDetails,
-  SearchScreen,
   JoinCommunitiesScreen,
   CommunitiesScreen,
   IndividualCommunityScreen,
-  HomeFeed
+  HomeFeed,
+  SearchScreen,
+  OtherProfileScreen
 } from './screens';
 
 import {
@@ -43,16 +48,20 @@ import {
 
 import { Righteous_400Regular } from '@expo-google-fonts/righteous';
 
-const screenOptionsHeader = {
+const screenOptionsHeader = ({ navigation }) => ({
   headerLeft: () => <Text style={styles.teamName}>entourage</Text>,
   headerRight: () => (
     <View style={styles.headerRightSearchSend}>
-      <SearchIcon style={styles.searchIcon} />
+      <Pressable onPress={() => navigation.navigate("HOME", { screen: "SearchScreen", params: {} })}>
+        <SearchIcon
+          style={styles.searchIcon}
+        />
+      </Pressable>
       <DMIcon />
     </View>
   ),
   headerShadowVisible: false,
-};
+});
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -78,7 +87,8 @@ export default function App() {
     return (
       <HomeStack.Navigator initialRouteName="HomeFeed" screenOptions={{ title: null }}>
         <HomeStack.Screen name="HomeScreen" component={HomeFeed} options={screenOptionsHeader} />
-
+        <HomeStack.Screen name="SearchScreen" component={SearchScreen} options={screenOptionsHeader} />
+        <HomeStack.Screen name="OtherProfileScreen" component={OtherProfileScreen} options={screenOptionsHeader} />
       </HomeStack.Navigator>
     );
   }
@@ -119,9 +129,15 @@ export default function App() {
       <ChatStack.Navigator initialRouteName="CommunitiesScreen" screenOptions={{ title: null }}>
         <ChatStack.Screen
           name="CommunitiesScreen"
-          component={IndividualCommunityScreen}
+          component={CommunitiesScreen}
           options={screenOptionsHeader}
         />
+        <ChatStack.Screen
+          name="JoinCommunitiesScreen"
+          component={JoinCommunitiesScreen}
+          options={screenOptionsHeader}
+        />
+
       </ChatStack.Navigator>
     );
   }
@@ -155,98 +171,104 @@ export default function App() {
   console.disableYellowBox = true;
   return (
     <NavigationContainer theme={navTheme}>
-      <Tab.Navigator
-        initialRouteName="HomeStack"
-        screenOptions={({ route }) => ({
-          tabBarIcon: ({ focused }) => {
-            let icon;
+      <NFTsProvider>
+        <UserDetailsProvider>
+          <HomeFeedProvider>
+            <Tab.Navigator
+              initialRouteName="HomeStack"
+              screenOptions={({ route }) => ({
+                tabBarIcon: ({ focused }) => {
+                  let icon;
 
-            if (route.name === 'HOME') {
-              icon = focused ? <HomeIconSelected /> : <HomeIconUnselected />;
-            } else if (route.name === 'EXPLORE') {
-              icon = focused ? <SparklesIconSelected /> : <SparklesIconUnselected />;
-            } else if (route.name === 'COMMUNITIES') {
-              icon = focused ? <ChatIconSelected /> : <ChatIconUnselected />;
-            } else {
-              icon = focused ? <ProfileIconSelected /> : <ProfileIconUnselected />;
-            }
+                  if (route.name === 'HOME') {
+                    icon = focused ? <HomeIconSelected /> : <HomeIconUnselected />;
+                  } else if (route.name === 'EXPLORE') {
+                    icon = focused ? <SparklesIconSelected /> : <SparklesIconUnselected />;
+                  } else if (route.name === 'COMMUNITIES') {
+                    icon = focused ? <ChatIconSelected /> : <ChatIconUnselected />;
+                  } else {
+                    icon = focused ? <ProfileIconSelected /> : <ProfileIconUnselected />;
+                  }
 
-            return icon;
-          },
-          tabBarStyle: {
-            paddingTop: 25,
-            height: '10%',
-            backgroundColor: 'black',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-          },
-          tabBarLabel: ({ focused }) => {
-            let label;
-            switch (route.name) {
-              case 'HOME':
-                return (label = focused ? (
-                  <Text style={TabBarLabelStyleActive}>HOME</Text>
-                ) : (
-                    <Text style={TabBarLabelStyleInactive}>HOME</Text>
-                  ));
-              case 'EXPLORE':
-                return (label = focused ? (
-                  <Text style={TabBarLabelStyleActive}>EXPLORE</Text>
-                ) : (
-                    <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
-                  ));
-              case 'COMMUNITIES':
-                return (label = focused ? (
-                  <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text>
-                ) : (
-                    <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
-                  ));
-              case 'PROFILE':
-                return (label = focused ? (
-                  <Text style={TabBarLabelStyleActive}>PROFILE</Text>
-                ) : (
-                    <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
-                  ));
-            }
-            return label;
-          },
-        })}>
-        <Tab.Screen
-          name="HOME"
-          component={HomeStack}
-          options={{
-            headerShown: false,
-          }}
-        />
+                  return icon;
+                },
+                tabBarStyle: {
+                  paddingTop: 25,
+                  height: '10%',
+                  backgroundColor: 'black',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                },
+                tabBarLabel: ({ focused }) => {
+                  let label;
+                  switch (route.name) {
+                    case 'HOME':
+                      return (label = focused ? (
+                        <Text style={TabBarLabelStyleActive}>HOME</Text>
+                      ) : (
+                          <Text style={TabBarLabelStyleInactive}>HOME</Text>
+                        ));
+                    case 'EXPLORE':
+                      return (label = focused ? (
+                        <Text style={TabBarLabelStyleActive}>EXPLORE</Text>
+                      ) : (
+                          <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
+                        ));
+                    case 'COMMUNITIES':
+                      return (label = focused ? (
+                        <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text>
+                      ) : (
+                          <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
+                        ));
+                    case 'PROFILE':
+                      return (label = focused ? (
+                        <Text style={TabBarLabelStyleActive}>PROFILE</Text>
+                      ) : (
+                          <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
+                        ));
+                  }
+                  return label;
+                },
+              })}>
+              <Tab.Screen
+                name="HOME"
+                component={HomeStack}
+                options={{
+                  headerShown: false,
+                }}
+              />
 
-        <Tab.Screen
-          name="EXPLORE"
-          component={SparklesStack}
-          options={{
-            headerShown: false,
-          }}
-        />
+              <Tab.Screen
+                name="EXPLORE"
+                component={SparklesStack}
+                options={{
+                  headerShown: false,
+                }}
+              />
 
-        <Tab.Screen
-          name="COMMUNITIES"
-          component={ChatStack}
-          options={{
-            headerShown: false,
-          }}
-        />
+              <Tab.Screen
+                name="COMMUNITIES"
+                component={ChatStack}
+                options={{
+                  headerShown: false,
+                }}
+              />
 
-        <Tab.Screen
-          name="PROFILE"
-          component={ProfileStack}
-          options={{
-            headerShown: false,
-          }}
-        />
-        {/* <Stack.Screen name="ArtistNFTs" component={ArtistNFTs} /> */}
-        {/* <Stack.Screen name="NFTDetails" component={NFTDetails} /> */}
-        {/* <Stack.Screen name="PurchaseScreen" component={PurchaseScreen} /> */}
-      </Tab.Navigator>
+              <Tab.Screen
+                name="PROFILE"
+                component={ProfileStack}
+                options={{
+                  headerShown: false,
+                }}
+              />
+              {/* <Stack.Screen name="ArtistNFTs" component={ArtistNFTs} /> */}
+              {/* <Stack.Screen name="NFTDetails" component={NFTDetails} /> */}
+              {/* <Stack.Screen name="PurchaseScreen" component={PurchaseScreen} /> */}
+            </Tab.Navigator>
+          </HomeFeedProvider>
+        </UserDetailsProvider>
+      </NFTsProvider>
     </NavigationContainer>
   );
 }

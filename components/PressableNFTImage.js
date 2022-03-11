@@ -24,9 +24,9 @@ NFTDetails Object with Following Form:
     str desc (description of the campaign NFT belongs to)
 }
 */
+
 export default function PressableNFTImage({ NFTDetails }) {
-    console.log(NFTDetails, "these r prorps")
-    let { NFTName, albumName, color, val, width, showInfo, desc } = NFTDetails;
+    let { NFTName, albumName, color, val, width, showInfo, desc, artist } = NFTDetails;
 
     const NFTProps = {
         width: width,

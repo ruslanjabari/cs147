@@ -4,9 +4,22 @@ import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
 import PiechartIcon from '../assets/icons/Piechart.svg';
 import { Colors } from '../assets/themes';
 import { PressableNFTImage } from '../components';
+import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
+import { NFTsContext } from '../assets/contextProviders/NFTsProvider';
+import React, { useState, useContext } from 'react';
 
 export default function NFTDetails({ navigation, route }) {
-  let { NFTName, albumName, color, desc, showInfo, val, width } = route.params;
+  const [userDetails, setUserDetails] = useContext(UserDetailsContext);
+  const [NFTs, setNFTs] = useContext(NFTsContext);
+  let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = route.params;
+  let artistName = () => artist;
+
+  let purchasedNFTsFromArtist = userDetails["purchasedNFTs"][artist];
+
+  if (purchasedNFTsFromArtist.includes(route.params)) {
+    sold = true;
+
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -21,12 +34,19 @@ export default function NFTDetails({ navigation, route }) {
         >
 
           <PressableNFTImage NFTDetails={route.params} />
-          <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
-            {NFTName}
-          </Text>
-          <Text style={{ position: 'absolute', bottom: 15, right: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
-            {val}
-          </Text>
+          {!sold &&
+            <>
+              <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+                {NFTName}
+              </Text>
+              <Text style={{ position: 'absolute', bottom: 15, right: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
+                {val}
+              </Text>
+            </>
+          }
+
+
+
         </View>
         <View style={styles.description}>
           <Text style={styles.descriptionText}>
@@ -37,17 +57,37 @@ export default function NFTDetails({ navigation, route }) {
 
 
       <View style={styles.footer}>
-        <Pressable
-          onPress={() =>
-            navigation.navigate('EXPLORE', {
-              screen: 'PurchaseScreen',
-              params: route.params
-            })
-          }
-          style={styles.button}>
-          <ShoppingCartIcon />
-          <Text style={styles.footerText}>PURCHASE</Text>
-        </Pressable>
+        {!sold ?
+          <Pressable
+            onPress={(artist) => {
+              navigation.navigate('EXPLORE', {
+                screen: 'PurchaseScreen',
+                params: route.params
+              });
+
+              let oldArtistNFTs = userDetails["purchasedNFTs"][[artistName()]];
+              let newArtistNFTs = [...oldArtistNFTs, route.params];
+
+
+              setUserDetails({
+                ...userDetails, "purchasedNFTs": {
+                  ...userDetails["purchasedNFTs"], [artistName()]: newArtistNFTs
+                }
+
+              });
+            }
+            }
+            style={styles.button}>
+            <ShoppingCartIcon />
+            <Text style={styles.footerText}>PURCHASE</Text>
+          </Pressable>
+          :
+          <View
+            style={styles.button}>
+
+            <Text style={styles.footerText}>SOLD</Text>
+          </View>
+        }
         <Pressable style={styles.button}>
           <PiechartIcon />
           <Text style={styles.footerText}>ANALYTICS</Text>

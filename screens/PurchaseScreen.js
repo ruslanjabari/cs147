@@ -7,6 +7,7 @@ import { PressableNFTImage } from '../components';
 export default function PurchaseScreen({ navigation, route }) {
   let { NFTName, albumName, color, desc, showInfo, val, width } = route.params;
   route.params.showInfo = false;
+
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

@@ -1,20 +1,23 @@
 import { Pressable, StyleSheet, View, Text } from 'react-native';
 import { Colors } from '../assets/themes';
 import { ProfileIconUnselected } from '../assets/icons/';
+import { useNavigation } from '@react-navigation/native';
 
-export default function ProfilePill(props) {
+export default function ProfilePill({ name }) {
+  let navigation = useNavigation();
+
   return (
     <Pressable
-      onPress={() => /*navigation.navigate('ArtistNFTScreen') */ {}}
-      style={styles.artistInfo}>
+      onPress={() => navigation.navigate("HOME", { screen: "OtherProfileScreen", params: { userName: name } })}
+      style={styles.artistInfo} >
       <View style={styles.artistInfoGroup}>
         <ProfileIconUnselected />
         <View style={styles.textGroup}>
-          <Text style={styles.artistName}>Daniel</Text>
+          <Text style={styles.artistName}>{name}</Text>
           <Text style={styles.contactInfo}>From your contacts</Text>
         </View>
       </View>
-    </Pressable>
+    </Pressable >
   );
 }
 

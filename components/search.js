@@ -2,8 +2,10 @@ import React from 'react';
 import { StyleSheet, TextInput, View, Keyboard, Button } from 'react-native';
 import { Feather, Entypo } from '@expo/vector-icons';
 import { Colors } from '../assets/themes';
+import { useNavigation } from '@react-navigation/native';
 
 const SearchBar = ({ clicked, searchPhrase, setSearchPhrase, setClicked }) => {
+
   // https://blog.logrocket.com/create-react-native-search-bar-from-scratch/  pretty much what I would have done but don't got time for it
   return (
     <View style={styles.container}>
@@ -57,7 +59,7 @@ const styles = StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flexDirection: 'row',
-    width: '90%',
+    width: '100%',
   },
   searchBar__unclicked: {
     padding: 10,

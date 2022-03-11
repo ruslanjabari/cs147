@@ -29,6 +29,7 @@ import DPhoenix from './DPhoenix.svg';
 import TrustNoOne from './TrustNoOne.svg';
 import BPL from './BPL.svg';
 import IsThisIt from './IsThisIt.svg';
+import ProfilePic from './profilepic.svg';
 
 
 import Dondalicious from './Dondalicious.svg';
@@ -38,6 +39,7 @@ import ForwardIcon from './ForwardIcon.svg';
 export {
   SearchIcon,
   DMIcon,
+  ProfilePic,
   HomeIconSelected,
   HomeIconUnselected,
   ProfileIconUnselected,

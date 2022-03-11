@@ -6,6 +6,7 @@ import JoinCommunitiesScreen from './JoinCommunitiesScreen';
 import CommunitiesScreen from './CommunitiesScreen';
 import IndividualCommunityScreen from './IndividualCommunityScreen';
 import HomeFeed from './HomeFeed';
+import OtherProfileScreen from './OtherProfileScreen';
 
 export {
   ArtistNFTScreen,
@@ -15,5 +16,6 @@ export {
   JoinCommunitiesScreen,
   CommunitiesScreen,
   IndividualCommunityScreen,
-  HomeFeed
+  HomeFeed,
+  OtherProfileScreen
 };

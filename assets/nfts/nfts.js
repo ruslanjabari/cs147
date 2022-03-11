@@ -23,7 +23,9 @@ export default NFTs = {
                 val: "7.4 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign'
+                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "BOUND 2 #002",
@@ -32,7 +34,9 @@ export default NFTs = {
                 val: "7.4 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign'
+                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "BOUND 2 #003",
@@ -41,7 +45,9 @@ export default NFTs = {
                 val: "7.4 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign'
+                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "BOUND 2 #004",
@@ -50,7 +56,9 @@ export default NFTs = {
                 val: "7.4 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign'
+                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "BOUND 2 #005",
@@ -59,7 +67,9 @@ export default NFTs = {
                 val: "7.4 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign'
+                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "BOUND 2 #006",
@@ -68,7 +78,9 @@ export default NFTs = {
                 val: "7.4 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign'
+                desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+                artist: "Kanye West",
+                sold: false
             }
         ],
     "DONDA":
@@ -80,7 +92,9 @@ export default NFTs = {
                 val: "7.2 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign'
+                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Jail #002",
@@ -89,7 +103,9 @@ export default NFTs = {
                 val: "7.2 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign'
+                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Jail #003",
@@ -98,7 +114,9 @@ export default NFTs = {
                 val: "7.2 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign'
+                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Jail #004",
@@ -107,7 +125,9 @@ export default NFTs = {
                 val: "7.2 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign'
+                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Jail #005",
@@ -116,7 +136,9 @@ export default NFTs = {
                 val: "7.2 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign'
+                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Jail #006",
@@ -125,7 +147,9 @@ export default NFTs = {
                 val: "7.2 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign'
+                desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+                artist: "Kanye West",
+                sold: false
             }
         ],
     "THE L":
@@ -137,7 +161,9 @@ export default NFTs = {
                 val: "7.1 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 5% of proceeds to Blue Star Moms'
+                desc: 'Ye is donating 5% of proceeds to Blue Star Moms',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Famous #002",
@@ -146,7 +172,9 @@ export default NFTs = {
                 val: "7.1 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 5% of proceeds to Blue Star Moms'
+                desc: 'Ye is donating 5% of proceeds to Blue Star Moms',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Famous #003",
@@ -155,7 +183,9 @@ export default NFTs = {
                 val: "7.1 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 5% of proceeds to Blue Star Moms'
+                desc: 'Ye is donating 5% of proceeds to Blue Star Moms',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Famous #004",
@@ -164,7 +194,9 @@ export default NFTs = {
                 val: "7.1 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 5% of proceeds to Blue Star Moms'
+                desc: 'Ye is donating 5% of proceeds to Blue Star Moms',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Famous #005",
@@ -173,7 +205,9 @@ export default NFTs = {
                 val: "7.1 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 5% of proceeds to Blue Star Moms'
+                desc: 'Ye is donating 5% of proceeds to Blue Star Moms',
+                artist: "Kanye West",
+                sold: false
             },
             {
                 NFTName: "Famous #006",
@@ -182,7 +216,9 @@ export default NFTs = {
                 val: "7.1 ETH",
                 width: 200,
                 showInfo: false,
-                desc: 'Ye is donating 5% of proceeds to Blue Star Moms'
+                desc: 'Ye is donating 5% of proceeds to Blue Star Moms',
+                artist: "Kanye West",
+                sold: false
             }
         ],
     "VIEWS":
@@ -195,6 +231,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: 'Drake is donating 1% of proceeds to CARE charity',
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Hype #002",
@@ -204,6 +242,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: 'Drake is donating 1% of proceeds to CARE charity',
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Hype #003",
@@ -213,6 +253,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: 'Drake is donating 1% of proceeds to CARE charity',
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Hype #004",
@@ -222,6 +264,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: 'Drake is donating 1% of proceeds to CARE charity',
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Hype #005",
@@ -231,6 +275,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: 'Drake is donating 1% of proceeds to CARE charity',
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Hype #006",
@@ -240,6 +286,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: 'Drake is donating 1% of proceeds to CARE charity',
+                artist: "Drake",
+                sold: false
             }
         ],
     "CLB":
@@ -252,6 +300,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["CLB"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "IMY2 #002",
@@ -261,6 +311,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["CLB"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "IMY2 #003",
@@ -270,6 +322,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["CLB"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "IMY2 #004",
@@ -279,6 +333,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["CLB"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "IMY2 #005",
@@ -288,6 +344,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["CLB"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "IMY2 #006",
@@ -297,6 +355,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["CLB"],
+                artist: "Drake",
+                sold: false
             }
         ],
     "SCORPION":
@@ -309,6 +369,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["SCORPION"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Elevate #002",
@@ -318,6 +380,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["SCORPION"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Elevate #003",
@@ -327,6 +391,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["SCORPION"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Elevate #004",
@@ -336,6 +402,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["SCORPION"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Elevate #005",
@@ -345,6 +413,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["SCORPION"],
+                artist: "Drake",
+                sold: false
             },
             {
                 NFTName: "Elevate #006",
@@ -354,6 +424,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["SCORPION"],
+                artist: "Drake",
+                sold: false
             }
         ],
     "IS THIS IT":
@@ -366,6 +438,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["IS THIS IT"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Soma #002",
@@ -375,6 +449,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["IS THIS IT"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Soma #003",
@@ -384,6 +460,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["IS THIS IT"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Soma #004",
@@ -393,6 +471,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["IS THIS IT"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Soma #005",
@@ -402,6 +482,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["IS THIS IT"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Soma #006",
@@ -411,6 +493,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["IS THIS IT"],
+                artist: "The Strokes",
+                sold: false
             }
         ],
     "ANGLES":
@@ -423,6 +507,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ANGLES"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Games #002",
@@ -432,6 +518,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ANGLES"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Games #003",
@@ -441,6 +529,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ANGLES"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Games #004",
@@ -450,6 +540,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ANGLES"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Games #005",
@@ -459,6 +551,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ANGLES"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "Games #006",
@@ -468,6 +562,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ANGLES"],
+                artist: "The Strokes",
+                sold: false
             }
         ],
     "ROOM":
@@ -480,6 +576,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ROOM"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "12:51 #002",
@@ -489,6 +587,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ROOM"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "12:51 #003",
@@ -498,6 +598,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ROOM"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "12:51 #004",
@@ -507,6 +609,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ROOM"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "12:51 #005",
@@ -516,6 +620,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ROOM"],
+                artist: "The Strokes",
+                sold: false
             },
             {
                 NFTName: "12:51 #006",
@@ -525,6 +631,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["ROOM"],
+                artist: "The Strokes",
+                sold: false
             }
         ],
     "D PHOENIX":
@@ -537,6 +645,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["D PHOENIX"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Opera #002",
@@ -546,6 +656,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["D PHOENIX"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Opera #003",
@@ -555,6 +667,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["D PHOENIX"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Opera #004",
@@ -564,6 +678,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["D PHOENIX"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Opera #005",
@@ -573,6 +689,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["D PHOENIX"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Opera #006",
@@ -582,6 +700,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["D PHOENIX"],
+                artist: "D. Savage",
+                sold: false
             }
         ],
     "TRUST":
@@ -594,6 +714,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["TRUST"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Wytd #002",
@@ -603,6 +725,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["TRUST"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Wytd #003",
@@ -612,6 +736,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["TRUST"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Wytd #004",
@@ -621,6 +747,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["TRUST"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Wytd #005",
@@ -630,6 +758,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["TRUST"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Wytd #006",
@@ -639,6 +769,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["TRUST"],
+                artist: "D. Savage",
+                sold: false
             }
         ],
     "BPL":
@@ -651,6 +783,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["BPL"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Runtz #002",
@@ -660,6 +794,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["BPL"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Runtz #003",
@@ -669,6 +805,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["BPL"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Runtz #004",
@@ -678,6 +816,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["BPL"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Runtz #005",
@@ -687,6 +827,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["BPL"],
+                artist: "D. Savage",
+                sold: false
             },
             {
                 NFTName: "Runtz #006",
@@ -696,6 +838,8 @@ export default NFTs = {
                 width: 200,
                 showInfo: false,
                 desc: CampaignDescriptions["BPL"],
+                artist: "D. Savage",
+                sold: false
             }
         ],
 

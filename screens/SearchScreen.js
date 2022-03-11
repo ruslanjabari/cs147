@@ -1,32 +1,25 @@
 import { useEffect, useState } from 'react';
-import { FlatList, SafeAreaView, StyleSheet } from 'react-native';
+import { FlatList, SafeAreaView, StyleSheet, Pressable } from 'react-native';
 import { ProfilePill, SearchBar, InfoBox } from '../components';
+import { useNavigation } from '@react-navigation/native';
 
 const DATA = [
   {
-    user: 'NickISAGoat',
-    action: 'purchased',
-    item: 'Bound2',
-    image: null,
-    likes: 0,
-    artist: 'Ye',
-    time: '1 hour ago',
+    user: 'Walk5',
   },
   {
-    user: 'KANYE WEST',
-    action: 'launched',
-    item: 'DONDA',
-    image: null,
-    likes: 10,
-    artist: 'Ye',
-    time: '23 minutes ago',
+    user: 'Ali2',
   },
+  {
+    user: 'Milo7'
+  }
 ];
 
 export default function SearchScreen() {
   const [searchPhrase, setSearchPhrase] = useState('');
   const [clicked, setClicked] = useState(false);
   const [data, setData] = useState(DATA);
+  let navigation = useNavigation();
   const handleSearch = () => {
     if (searchPhrase.length === 0) {
       setData(DATA);
@@ -49,10 +42,10 @@ export default function SearchScreen() {
         clicked={clicked}
         setClicked={setClicked}
       />
-      <InfoBox />
+      {/* <InfoBox /> */}
       <FlatList
         data={data}
-        renderItem={({ item }) => <ProfilePill />}
+        renderItem={({ item }) => <ProfilePill name={item.user} />}
         keyExtractor={(_, index) => index}
       />
     </SafeAreaView>
