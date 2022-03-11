@@ -1,7 +1,5 @@
 import { Pressable, View, SafeAreaView, StyleSheet, Text } from 'react-native';
-import Bound2 from '../assets/icons/Bound2.svg';
 import { Colors } from '../assets/themes';
-import { LifeOfPablo, Yeezus, Donda, Views, CLB, Scorpion, IsThisIt, Angles, Room, DPhoenix, TrustNoOne, BPL } from '../assets/icons';
 import { PressableNFTImage } from '../components';
 
 export default function PurchaseScreen({ navigation, route }) {
@@ -24,7 +22,6 @@ export default function PurchaseScreen({ navigation, route }) {
             associated campaign!
           </Text>
         </View>
-
       </View>
       <View style={styles.footer}>
         <Pressable style={styles.button}>
@@ -85,6 +82,6 @@ const styles = StyleSheet.create({
   },
   NFTDisplay: {
     display: 'flex',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 });

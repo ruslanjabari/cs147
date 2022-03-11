@@ -31,10 +31,11 @@ import BPL from './BPL.svg';
 import IsThisIt from './IsThisIt.svg';
 import ProfilePic from './profilepic.svg';
 
-
 import Dondalicious from './Dondalicious.svg';
 import DiscordIcon from './DiscordIcon.svg';
 import ForwardIcon from './ForwardIcon.svg';
+
+import HeartIconFilled from './HeartIconFilled.svg';
 
 export {
   SearchIcon,
@@ -72,4 +73,5 @@ export {
   Dondalicious,
   DiscordIcon,
   ForwardIcon,
+  HeartIconFilled,
 };

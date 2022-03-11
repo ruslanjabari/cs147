@@ -18,7 +18,7 @@ import {
   IndividualCommunityScreen,
   HomeFeed,
   SearchScreen,
-  OtherProfileScreen
+  OtherProfileScreen,
 } from './screens';
 
 import {
@@ -52,10 +52,30 @@ const screenOptionsHeader = ({ navigation }) => ({
   headerLeft: () => <Text style={styles.teamName}>entourage</Text>,
   headerRight: () => (
     <View style={styles.headerRightSearchSend}>
-      <Pressable onPress={() => navigation.navigate("HOME", { screen: "SearchScreen", params: {} })}>
-        <SearchIcon
-          style={styles.searchIcon}
-        />
+      <Pressable
+        onPress={() => navigation.navigate('HOME', { screen: 'SearchScreen', params: {} })}>
+        <SearchIcon style={styles.searchIcon} />
+      </Pressable>
+      <DMIcon />
+    </View>
+  ),
+  headerShadowVisible: false,
+});
+
+const screenOptionsHeaderWithBack = ({ navigation }) => ({
+  headerLeft: () => (
+    <>
+      <Text style={styles.teamName}>entourage</Text>
+      <Pressable style={{ marginLeft: 15, marginBottom: -10 }} onPress={() => navigation.goBack()}>
+        <Text>{`< back`}</Text>
+      </Pressable>
+    </>
+  ),
+  headerRight: () => (
+    <View style={styles.headerRightSearchSend}>
+      <Pressable
+        onPress={() => navigation.navigate('HOME', { screen: 'SearchScreen', params: {} })}>
+        <SearchIcon style={styles.searchIcon} />
       </Pressable>
       <DMIcon />
     </View>
@@ -87,8 +107,16 @@ export default function App() {
     return (
       <HomeStack.Navigator initialRouteName="HomeFeed" screenOptions={{ title: null }}>
         <HomeStack.Screen name="HomeScreen" component={HomeFeed} options={screenOptionsHeader} />
-        <HomeStack.Screen name="SearchScreen" component={SearchScreen} options={screenOptionsHeader} />
-        <HomeStack.Screen name="OtherProfileScreen" component={OtherProfileScreen} options={screenOptionsHeader} />
+        <HomeStack.Screen
+          name="SearchScreen"
+          component={SearchScreen}
+          options={screenOptionsHeaderWithBack}
+        />
+        <HomeStack.Screen
+          name="OtherProfileScreen"
+          component={OtherProfileScreen}
+          options={screenOptionsHeaderWithBack}
+        />
       </HomeStack.Navigator>
     );
   }
@@ -105,40 +133,46 @@ export default function App() {
         <SparklesStack.Screen
           name="ArtistNFTScreen"
           component={ArtistNFTScreen}
-          options={screenOptionsHeader}
+          options={screenOptionsHeaderWithBack}
         />
 
         <SparklesStack.Screen
           name="PurchaseScreen"
           component={PurchaseScreen}
-          options={screenOptionsHeader}
+          options={screenOptionsHeaderWithBack}
         />
 
         <SparklesStack.Screen
           name="NFTDetails"
           component={NFTDetails}
-          options={screenOptionsHeader}
+          options={screenOptionsHeaderWithBack}
         />
       </SparklesStack.Navigator>
     );
   }
 
-  function ChatStack() {
-    const ChatStack = createStackNavigator();
+  function CommunitiesStack() {
+    const CommunitiesStack = createStackNavigator();
     return (
-      <ChatStack.Navigator initialRouteName="CommunitiesScreen" screenOptions={{ title: null }}>
-        <ChatStack.Screen
+      <CommunitiesStack.Navigator
+        initialRouteName="CommunitiesScreen"
+        screenOptions={{ title: null }}>
+        <CommunitiesStack.Screen
           name="CommunitiesScreen"
           component={CommunitiesScreen}
           options={screenOptionsHeader}
         />
-        <ChatStack.Screen
+        <CommunitiesStack.Screen
           name="JoinCommunitiesScreen"
           component={JoinCommunitiesScreen}
           options={screenOptionsHeader}
         />
-
-      </ChatStack.Navigator>
+        <CommunitiesStack.Screen
+          name="CommunityScreen"
+          component={PurchaseScreen}
+          options={screenOptionsHeaderWithBack}
+        />
+      </CommunitiesStack.Navigator>
     );
   }
 
@@ -165,9 +199,9 @@ export default function App() {
   const TabBarLabelStyleInactive = {
     marginTop: 17,
     fontSize: 12,
-    color: "#C4C4C4",
-    fontFamily: 'Dosis_700Bold'
-  }
+    color: '#C4C4C4',
+    fontFamily: 'Dosis_700Bold',
+  };
   console.disableYellowBox = true;
   return (
     <NavigationContainer theme={navTheme}>
@@ -207,26 +241,26 @@ export default function App() {
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>HOME</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>HOME</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>HOME</Text>
+                      ));
                     case 'EXPLORE':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>EXPLORE</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
+                      ));
                     case 'COMMUNITIES':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
+                      ));
                     case 'PROFILE':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>PROFILE</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
+                      ));
                   }
                   return label;
                 },
@@ -249,7 +283,7 @@ export default function App() {
 
               <Tab.Screen
                 name="COMMUNITIES"
-                component={ChatStack}
+                component={CommunitiesStack}
                 options={{
                   headerShown: false,
                 }}

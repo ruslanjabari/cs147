@@ -1,12 +1,34 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import { View, StyleSheet, Pressable, Text } from 'react-native';
-import { ProfileIconUnselected, MusicNoteIcon, HeartIcon, Dondalicious } from '../assets/icons/';
+import {
+  ProfileIconUnselected,
+  MusicNoteIcon,
+  HeartIcon,
+  Dondalicious,
+  HeartIconFilled,
+} from '../assets/icons/';
 import { Colors } from '../assets/themes';
 import PressableNFTImage from './PressableNFTImage';
+import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
 export default function Post(props) {
   const { user, action, item, likes, artist, time, NFTDetails } = props.item;
-  const [liked, setLiked] = React.useState(false);
+  // const [liked, setLiked] = React.useState(false);
+  const [homeFeed, setHomeFeed] = useContext(HomeFeedContext);
+  const [liked, setLiked] = useState(
+    homeFeed.forEach((post) => {
+      if (
+        post.user === user &&
+        post.action === action &&
+        post.item === item &&
+        post.likes === likes &&
+        post.artist === artist &&
+        post.time === time
+      ) {
+        return post.liked;
+      }
+    })
+  );
 
   return (
     <View style={styles.post}>
@@ -15,7 +37,6 @@ export default function Post(props) {
           {action === 'purchased' ? <ProfileIconUnselected /> : <MusicNoteIcon />}
         </View>
         <View style={styles.postInfoContainer}>
-
           <Text style={styles.postInfo}>
             <Text style={styles.userName}>{user}</Text>
             {action === 'purchased'
@@ -32,7 +53,31 @@ export default function Post(props) {
           <Text style={styles.timestamp}>{time}</Text>
         </View>
         <View style={styles.postFooterIcons}>
-          <Pressable style={styles.heart}>{liked ? <HeartIcon /> : <HeartIcon />}</Pressable>
+          <Text style={styles.likes}>{likes}</Text>
+          <Pressable
+            style={styles.heart}
+            onPress={() => {
+              setHomeFeed((prevHomeFeed) => {
+                const newHomeFeed = [...prevHomeFeed];
+                const postIndex = newHomeFeed.findIndex((post) => {
+                  return (
+                    post.user === user &&
+                    post.action === action &&
+                    post.item === item &&
+                    post.likes === likes &&
+                    post.artist === artist &&
+                    post.time === time
+                  );
+                });
+                newHomeFeed[postIndex].liked = !newHomeFeed[postIndex].liked;
+                if (newHomeFeed[postIndex].liked) newHomeFeed[postIndex].likes++;
+                else newHomeFeed[postIndex].likes--;
+                return newHomeFeed;
+              });
+              setLiked(!liked);
+            }}>
+            {liked ? <HeartIconFilled /> : <HeartIcon />}
+          </Pressable>
           <Pressable style={styles.DM}></Pressable>
         </View>
       </View>
@@ -59,7 +104,7 @@ const styles = StyleSheet.create({
     paddingLeft: 30,
     paddingBottom: 30,
     flex: 1,
-    flexWrap: 'wrap'
+    flexWrap: 'wrap',
   },
   userName: {
     fontSize: 22,
@@ -76,11 +121,21 @@ const styles = StyleSheet.create({
   },
   postFooterIcons: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   postImage: {
-    alignItems: 'center'
+    alignItems: 'center',
   },
   nft: {
-    marginBottom: 10
-  }
+    marginBottom: 10,
+  },
+  heart: {
+    width: 40,
+    height: 40,
+  },
+  likes: {
+    fontFamily: 'Dosis_700Bold',
+    fontSize: 18,
+    marginBottom: 4,
+  },
 });
