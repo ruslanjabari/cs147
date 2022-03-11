@@ -9,9 +9,10 @@ import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvid
 
 const Elem = (item) => {
   const navigation = useNavigation();
-  console.log('da item in da elem', item);
   return (
-    <Pressable onPress={() => navigation.navigate('')} style={styles.button}>
+    <Pressable
+      onPress={() => navigation.navigate('JoinIndividualCommunityScreen', { item })}
+      style={styles.button}>
       {item.prop[Object.keys(item.prop)[0]].icon}
       {/* ^ pass in through item */}
     </Pressable>
