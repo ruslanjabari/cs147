@@ -6,8 +6,16 @@ import { Colors } from '../assets/themes';
 import { PressableNFTImage } from '../components';
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 import { NFTsContext } from '../assets/contextProviders/NFTsProvider';
-import React, { useState, useContext } from 'react';
+import React, { munitiesuseState, useContext } from 'react';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
+import { Dondalicious } from '../assets/icons';
+
+const Communities = [
+  { 'Kanye West': { name: 'TeamYe', mem: '21,045', icon: <Dondalicious /> } },
+  { Drake: { ClubStrokes: '5,671' } },
+  { 'The Strokes': { DrakeZone: '32,135' } },
+  { 'D. Savage': { DSavCente: 'r-934' } },
+];
 
 export default function NFTDetails({ navigation, route }) {
   const [userDetails, setUserDetails] = useContext(UserDetailsContext);
@@ -16,7 +24,7 @@ export default function NFTDetails({ navigation, route }) {
   let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = route.params;
   let artistName = () => artist;
 
-  let purchasedNFTsFromArtist = userDetails["purchasedNFTs"][artist];
+  let purchasedNFTsFromArtist = userDetails['purchasedNFTs'][artist];
 
   if (purchasedNFTsFromArtist.includes(route.params) || route.params.sold) {
     sold = true;
@@ -75,7 +83,7 @@ export default function NFTDetails({ navigation, route }) {
               Alert.alert('Confirm Purchase', 'Are you sure you want to purchase this NFT?', [
                 {
                   text: 'Cancel',
-                  onPress: () => { },
+                  onPress: () => {},
                   style: 'cancel',
                 },
                 {
@@ -95,7 +103,7 @@ export default function NFTDetails({ navigation, route }) {
                         liked: false, // hacky, you like your own
                         artist: artist,
                         time: 'Just now',
-                        "NFTDetails": {
+                        NFTDetails: {
                           NFTName: NFTName,
                           albumName: albumName,
                           color: color,
@@ -115,6 +123,10 @@ export default function NFTDetails({ navigation, route }) {
 
                     setUserDetails({
                       ...userDetails,
+                      potentialCommunities: [
+                        Communities.find((artist) => (artist = artistName())),
+                        ...userDetails['potentialCommunities'],
+                      ],
                       purchasedNFTs: {
                         ...userDetails['purchasedNFTs'],
                         [artistName()]: newArtistNFTs,
@@ -129,10 +141,10 @@ export default function NFTDetails({ navigation, route }) {
             <Text style={styles.footerText}>PURCHASE</Text>
           </Pressable>
         ) : (
-            <View style={styles.button}>
-              <Text style={styles.footerText}>PURCHASED</Text>
-            </View>
-          )}
+          <View style={styles.button}>
+            <Text style={styles.footerText}>PURCHASED</Text>
+          </View>
+        )}
         <Pressable style={styles.button}>
           <PiechartIcon />
           <Text style={styles.footerText}>ANALYTICS</Text>

@@ -61,7 +61,6 @@ const screenOptionsHeader = ({ navigation }) => ({
         onPress={() => navigation.navigate('HOME', { screen: 'SearchScreen', params: {} })}>
         <SearchIcon style={styles.searchIcon} />
       </Pressable>
-
     </View>
   ),
   headerShadowVisible: false,
@@ -82,7 +81,6 @@ const screenOptionsHeaderWithBack = ({ navigation }) => ({
         onPress={() => navigation.navigate('HOME', { screen: 'SearchScreen', params: {} })}>
         <SearchIcon style={styles.searchIcon} />
       </Pressable>
-
     </View>
   ),
   headerShadowVisible: false,
@@ -171,7 +169,7 @@ export default function App() {
         <CommunitiesStack.Screen
           name="JoinCommunitiesScreen"
           component={JoinCommunitiesScreen}
-          options={screenOptionsHeader}
+          options={screenOptionsHeaderWithBack}
         />
         <CommunitiesStack.Screen
           name="CommunityScreen"
@@ -220,9 +218,9 @@ export default function App() {
   const TabBarLabelStyleInactive = {
     marginTop: 17,
     fontSize: 12,
-    color: "#C4C4C4",
-    fontFamily: 'Dosis_700Bold'
-  }
+    color: '#C4C4C4',
+    fontFamily: 'Dosis_700Bold',
+  };
 
   console.disableYellowBox = true;
 
@@ -265,26 +263,26 @@ export default function App() {
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>HOME</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>HOME</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>HOME</Text>
+                      ));
                     case 'EXPLORE':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>EXPLORE</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
+                      ));
                     case 'COMMUNITIES':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
+                      ));
                     case 'PROFILE':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>PROFILE</Text>
                       ) : (
-                          <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
-                        ));
+                        <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
+                      ));
                   }
                   return label;
                 },
