@@ -7,11 +7,12 @@ import { SafeAreaView, View, FlatList, Pressable, Text, StyleSheet } from 'react
 
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 
-const Elem = ({ item }) => {
+const Elem = (item) => {
   const navigation = useNavigation();
+  console.log('da item in da elem', item);
   return (
-    <Pressable onPress={() => navigation.navigate(props.NFTName)} style={styles.button}>
-      {Object.keys(item).map((key) => key.icon)}
+    <Pressable onPress={() => navigation.navigate('')} style={styles.button}>
+      {item.prop[Object.keys(item.prop)[0]].icon}
       {/* ^ pass in through item */}
     </Pressable>
   );
@@ -19,15 +20,14 @@ const Elem = ({ item }) => {
 
 const renderItem = ({ item }) => (
   <View style={styles.renderItem}>
-    <Elem />
-    {false ? null : <Elem props={item.icon} />}
+    <Elem prop={item} />
+    {/* {false ? null : <Elem item={item} />} */}
     {/* ^^ case when only one NFT is remaining, this does not handle it, just flagging it! */}
   </View>
 );
 
 export default function JoinCommunitiesScreen() {
-  const data = useContext(UserDetailsContext)['potentialCommunities'] || [];
-  console.log(useContext(UserDetailsContext));
+  const data = useContext(UserDetailsContext)[0].potentialCommunities || [];
   // { 'Kanye West': { name: 'TeamYe', mem: '21,045', icon: <Dondalicious /> } },
   return (
     <SafeAreaView style={styles.container}>
