@@ -2,21 +2,17 @@ import { Pressable, View, SafeAreaView, StyleSheet, Text, Alert } from 'react-na
 import Bound2 from '../assets/icons/Bound2.svg';
 import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
 import PiechartIcon from '../assets/icons/Piechart.svg';
+
+import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 import { Colors } from '../assets/themes';
 import { PressableNFTImage } from '../components';
-import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 import { NFTsContext } from '../assets/contextProviders/NFTsProvider';
 import React, { useState, useContext } from 'react';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
 export default function JoinIndividualCommunityScreen({ navigation, route }) {
-    //const [userDetails, setUserDetails] = useContext(UserDetailsContext);
-    // const [NFTs, setNFTs] = useContext(NFTsContext);
-    //  const [homeFeed, setHomeFeed] = useContext(HomeFeedContext);
-    //let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = route.params;
-    // { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = 
-    // let NFTName = 
-    // let artistName = () => artist;
+    const [userDetails, setUserDetails] = useContext(UserDetailsContext);
+
     let communityObj = {
         NFTName: "DSavCenter",
         albumName: "DSavCenter",
@@ -24,14 +20,14 @@ export default function JoinIndividualCommunityScreen({ navigation, route }) {
         desc: 'Exclusive community available to fans who own NFTs from DSavCenter NFT Campaigns.',
         showInfo: false,
         val: 0,
-        width: 200,
+        width: 250,
         artist: "D. Savage",
         sold: false
     }
 
+    // this will be actual props, only NFTName, albumName rlly relevant. 
+    // let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = route.params;
     let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = communityObj;
-
-
 
     return (
         <SafeAreaView style={styles.container}>
@@ -43,22 +39,7 @@ export default function JoinIndividualCommunityScreen({ navigation, route }) {
                         alignItems: 'center',
                         position: 'relative',
                     }}>
-                    <PressableNFTImage NFTDetails={communityObj} />
-
-
-                    <Text
-                        style={{
-                            position: 'absolute',
-                            top: 10,
-                            left: 40,
-                            color: 'white',
-                            fontFamily: 'Dosis_700Bold',
-                            fontSize: 16,
-                        }}>
-                        {NFTName}
-                    </Text>
-
-
+                    <PressableNFTImage NFTDetails={communityObj} isCampaign={true} />
 
                 </View>
                 <View style={styles.description}>
@@ -69,7 +50,7 @@ export default function JoinIndividualCommunityScreen({ navigation, route }) {
             <View style={styles.footer}>
                 <Pressable
                     onPress={(artist) => {
-                        Alert.alert('Confirm Purchase', 'Are you sure you want to purchase this NFT?', [
+                        Alert.alert('Confirm Join', 'Are you sure you want to join this community?', [
                             {
                                 text: 'Cancel',
                                 onPress: () => { },
@@ -78,10 +59,13 @@ export default function JoinIndividualCommunityScreen({ navigation, route }) {
                             {
                                 text: 'Confirm',
                                 onPress: () => {
-                                    navigation.navigate('EXPLORE', {
-                                        screen: 'PurchaseScreen',
-                                        params: route.params,
-                                    });
+                                    // navigation.navigate('COMMUNITIES', {
+                                    //     screen: 'JoinedCommunityScreen',
+                                    //     params: route.params,
+                                    // });
+
+                                    setUserDetails({ ...userDetails, "joinedCommunities": [...userDetails["joinedCommunities"], NFTName] })
+
                                     // hard coded
                                     // setHomeFeed([
                                     //     {
@@ -123,10 +107,7 @@ export default function JoinIndividualCommunityScreen({ navigation, route }) {
                     <Text style={styles.footerText}>JOIN COMMUNITY</Text>
                 </Pressable>
 
-                <Pressable style={styles.button}>
 
-                    <Text style={styles.footerText}>JOIN DISCORD</Text>
-                </Pressable>
             </View>
         </SafeAreaView>
     );
@@ -152,7 +133,7 @@ const styles = StyleSheet.create({
         flex: 3,
         alignItems: 'center',
         justifyContent: 'flex-start',
-        marginTop: -15,
+
     },
     description: {
         width: '100%',

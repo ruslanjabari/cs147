@@ -85,18 +85,23 @@ export default function PressableNFTImage({ NFTDetails, isCampaign }) {
             onPress={() => navigation.navigate(parentNav, { screen: destScreen, params: NFTDetails })}>
 
             {NFTMapper[albumName]}
-
-            {showInfo &&
+            {isCampaign && <Text style={{ position: 'absolute', left: 0, right: 0, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 26, marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
+                {albumName}
+            </Text>
+            }
+            {
+                (!isCampaign && showInfo) &&
                 <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
                     {NFTName}
                 </Text>
             }
-            {showInfo &&
+            {
+                (!isCampaign && showInfo) &&
                 <Text style={{ position: 'absolute', bottom: 15, right: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
                     {val}
                 </Text>
             }
-        </Pressable>
+        </Pressable >
     )
 }
 
