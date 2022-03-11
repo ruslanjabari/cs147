@@ -49,7 +49,10 @@ const styles = StyleSheet.create({
     },
     headerLeft: {
         width: '30%',
-        marginLeft: '10%',
+        marginLeft: '8%',
+        marginRight: 5,
+        paddingBottom: 2
+
     },
     artistName: {
         fontSize: 40,
