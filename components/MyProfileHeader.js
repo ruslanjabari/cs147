@@ -1,6 +1,7 @@
 import { Text, View, StyleSheet, Pressable } from 'react-native';
 import { Colors } from '../assets/themes';
 import { ProfileBlack, Ye, Verified, Strokes, Drake, DSavage, ProfilePic } from '../assets/icons/';
+import { useNavigation } from '@react-navigation/native';
 
 const KanyeObj = { artistName: "Kanye West", followers: "1.4M", img: <Ye width={100} height={100} /> }
 const StrokesObj = { artistName: "The Strokes", followers: "6M", img: <Strokes width={100} height={100} /> }
@@ -11,7 +12,7 @@ const DSavageObj = { artistName: "D. Savage   ", followers: "1M", img: <DSavage 
 
 
 export default function MyProfileHeader({ artist }) {
-
+    let navigation = useNavigation();
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -28,7 +29,7 @@ export default function MyProfileHeader({ artist }) {
                             <ProfileBlack width={20} />
                             <Text style={styles.artistFollowers}>40</Text>
                         </View>
-                        <Pressable style={styles.button}>
+                        <Pressable style={styles.button} onPress={() => navigation.navigate("COMMUNITIES", { screen: "CommunitiesScreen" })}>
                             <Text style={styles.buttonText}>COMMUNITIES</Text>
                         </Pressable>
                     </View>
