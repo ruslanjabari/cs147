@@ -10,7 +10,11 @@ import {
     Room,
     DPhoenix,
     TrustNoOne,
-    BPL
+    BPL,
+    TeamYe,
+    ClubStrokes,
+    DrakeZone,
+    DSavCenter
 } from '../assets/icons/';
 /*
 NFTDetails Object with Following Form:
@@ -25,13 +29,18 @@ NFTDetails Object with Following Form:
 }
 */
 
-export default function PressableNFTImage({ NFTDetails }) {
+export default function PressableNFTImage({ NFTDetails, isCampaign }) {
     let { NFTName, albumName, color, val, width, showInfo, desc, artist } = NFTDetails;
 
     const NFTProps = {
         width: width,
         fill: color,
         fillOpacity: 0.4,
+        style: { marginBottom: 10 }
+    }
+
+    const campaignProps = {
+        width: width,
         style: { marginBottom: 10 }
     }
 
@@ -47,17 +56,36 @@ export default function PressableNFTImage({ NFTDetails }) {
         "ROOM": <Room {...NFTProps} />,
         "D PHOENIX": <DPhoenix {...NFTProps} />,
         "TRUST": <TrustNoOne {...NFTProps} />,
-        "BPL": <BPL {...NFTProps} />
+        "BPL": <BPL {...NFTProps} />,
+        "TeamYe": <TeamYe {...campaignProps} />,
+        "ClubStrokes": <ClubStrokes {...campaignProps} />,
+        "DrakeZone": <DrakeZone {...campaignProps} />,
+        "DSavCenter": <DSavCenter {...campaignProps} />
     }
 
     let navigation = useNavigation();
+    let destScreen;
+    let parentNav;
+
+    isCampaign = true;
+
+
+    if (isCampaign) {
+        parentNav = "COMMUNITIES"
+        destScreen = "IndividualCommunityScreen"
+        showInfo = true;
+    } else {
+        parentNav = "EXPLORE";
+        destScreen = "NFTDetails";
+    }
 
     return (
         <Pressable
             style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}
-            onPress={() => navigation.navigate("EXPLORE", { screen: "NFTDetails", params: NFTDetails })}>
+            onPress={() => navigation.navigate(parentNav, { screen: destScreen, params: NFTDetails })}>
 
             {NFTMapper[albumName]}
+
             {showInfo &&
                 <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
                     {NFTName}

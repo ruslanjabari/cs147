@@ -36,6 +36,11 @@ import DiscordIcon from './DiscordIcon.svg';
 import ForwardIcon from './ForwardIcon.svg';
 
 import HeartIconFilled from './HeartIconFilled.svg';
+import TeamYe from './TeamYe.svg';
+import ClubStrokes from './ClubStrokes.svg';
+import DrakeZone from './DrakeZone.svg'
+import DSavCenter from './DSavCenter'
+
 
 export {
   SearchIcon,
@@ -74,4 +79,8 @@ export {
   DiscordIcon,
   ForwardIcon,
   HeartIconFilled,
+  TeamYe,
+  ClubStrokes,
+  DrakeZone,
+  DSavCenter
 };

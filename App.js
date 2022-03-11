@@ -20,6 +20,7 @@ import {
   HomeFeed,
   SearchScreen,
   OtherProfileScreen,
+  JoinIndividualCommunityScreen,
 } from './screens';
 
 import {
@@ -176,6 +177,11 @@ export default function App() {
           component={PurchaseScreen}
           options={screenOptionsHeaderWithBack}
         />
+        <CommunitiesStack.Screen
+          name="IndividualCommunityScreen"
+          component={IndividualCommunityScreen}
+          options={screenOptionsHeaderWithBack}
+        />
       </CommunitiesStack.Navigator>
     );
   }
@@ -290,7 +296,7 @@ export default function App() {
 
               <Tab.Screen
                 name="COMMUNITIES"
-                component={CommunitiesStack}
+                component={JoinIndividualCommunityScreen}
                 options={{
                   headerShown: false,
                 }}

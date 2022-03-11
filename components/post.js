@@ -41,7 +41,7 @@ export default function Post(props) {
             <Text style={styles.userName}>{user}</Text>
             {action === 'purchased'
               ? ` just purchased "${item}" by ${artist}!`
-              : ` just launched the "${item}" campaign!`}
+              : ` just launched the "${item}" community!`}
           </Text>
         </View>
       </View>

@@ -95,7 +95,7 @@ export default function NFTDetails({ navigation, route }) {
                         liked: false, // hacky, you like your own
                         artist: artist,
                         time: 'Just now',
-                        NFTDetails: {
+                        "NFTDetails": {
                           NFTName: NFTName,
                           albumName: albumName,
                           color: color,
