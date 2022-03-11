@@ -16,7 +16,7 @@ export default function NFTDetails({ navigation, route }) {
 
   let purchasedNFTsFromArtist = userDetails["purchasedNFTs"][artist];
 
-  if (purchasedNFTsFromArtist.includes(route.params)) {
+  if (purchasedNFTsFromArtist.includes(route.params) || route.params.sold) {
     sold = true;
 
   }

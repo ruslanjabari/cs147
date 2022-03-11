@@ -19,7 +19,6 @@ const CampaignDescriptions = {
 export const NFTsContext = createContext();
 
 const NFTsProvider = (props) => {
-    console.log(NFTs, "NFTs in providr")
     const [NFTs, setNFTs] = useState({
         "YEEZUS":
             [

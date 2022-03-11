@@ -7,6 +7,9 @@ const StrokesObj = { artistName: "The Strokes", followers: "6M", img: <Strokes w
 const DrakeObj = { artistName: "Drake          ", followers: "9M", img: <Drake width={100} height={100} /> }
 const DSavageObj = { artistName: "D. Savage   ", followers: "1M", img: <DSavage width={100} height={100} /> }
 
+
+
+
 export default function MyProfileHeader({ artist }) {
 
     return (

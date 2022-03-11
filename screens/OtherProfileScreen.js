@@ -1,10 +1,10 @@
-// Personal profile screen
-
+// Other ppl profile screen
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { Animated, View, TouchableOpacity, Text, StyleSheet, FlatList, Pressable, ScrollView } from 'react-native';
 import { Colors } from '../assets/themes';
 import { useContext } from 'react';
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
+import uuid from 'react-native-uuid';
 import {
     Bound2, Yeezus, LifeOfPablo, Donda, Views,
     CLB,
@@ -21,6 +21,142 @@ import { useNavigation } from '@react-navigation/native';
 import NFTs from '../assets/nfts/nfts';
 import { PressableNFTImage, OtherProfileHeader } from '../components';
 
+const CampaignDescriptions = {
+    "YEEZUS": 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+    "DONDA": 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+    "THE L": 'Ye is donating 5% of proceeds to Blue Star Moms',
+    "VIEWS": 'Drake is donating 1% of proceeds to CARE charity',
+    "CLB": 'Drake is donating 8% of proceeds to the Wounded Warrior Project',
+    "SCORPION": 'Drake is donating 10% of proceeds to "Save the Children"',
+    "IS THIS IT": "The Strokes are donating 5% of proceeds to St. Jude Children's Research Hospital",
+    "ANGLES": 'The Strokes are donating 7% of proceeds to Smile Train Charity',
+    "ROOM": 'The Strokes are donating 15% of proceeds to the International Rescue Committee',
+    "D PHOENIX": 'D. Savage is donating 10% of proceeds to Camp Kesem',
+    "TRUST": 'D. Savage is donating 12% of proceeds to Stanford',
+    "BPL": 'D. Savage is donating 15% of proceeds to Heifer International'
+}
+
+const Walk5NFTs = {
+    "Kanye West": [{
+        NFTName: "BOUND 2 #007",
+        albumName: "YEEZUS",
+        color: "#e75480",
+        val: "7.4 ETH",
+        width: 200,
+        showInfo: false,
+        desc: 'Having been vocal about it for years, Ye is donating 10% of proceeds to the "Free Larry Hoover" campaign',
+        artist: "Kanye West",
+        sold: true,
+    },
+    {
+        NFTName: "Jail #010",
+        albumName: "DONDA",
+        color: "white",
+        val: "7.2 ETH",
+        width: 200,
+        showInfo: false,
+        desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+        artist: "Kanye West",
+        sold: true
+    },
+    {
+        NFTName: "Jail #007",
+        albumName: "DONDA",
+        color: "#e75480",
+        val: "7.2 ETH",
+        width: 200,
+        showInfo: false,
+        desc: 'Ye is donating 15% of proceeds to the "Cancel SNL" campaign',
+        artist: "Kanye West",
+        sold: true
+    }]
+}
+
+const Ali2NFTs = {
+    "Kanye West":
+        [
+            {
+                NFTName: "Famous #009",
+                albumName: "THE L",
+                color: "#a9a9a9",
+                val: "7.1 ETH",
+                width: 200,
+                showInfo: false,
+                desc: 'Ye is donating 5% of proceeds to Blue Star Moms',
+                artist: "Kanye West",
+                sold: true
+            }
+        ]
+    ,
+    "Drake": [
+        {
+            NFTName: "Elevate #007",
+            albumName: "SCORPION",
+            color: "#e75480",
+            val: "7.1 ETH",
+            width: 200,
+            showInfo: false,
+            desc: CampaignDescriptions["SCORPION"],
+            artist: "Drake",
+            sold: true
+        }
+    ],
+    "The Strokes": [
+        {
+            NFTName: "Soma #011",
+            albumName: "IS THIS IT",
+            color: "brown",
+            val: "3.2 ETH",
+            width: 200,
+            showInfo: false,
+            desc: CampaignDescriptions["IS THIS IT"],
+            artist: "The Strokes",
+            sold: true
+        }
+    ],
+}
+
+const Milo7NFTs = {
+    "D. Savage": [{
+        NFTName: "Runtz #012",
+        albumName: "BPL",
+        color: "lime",
+        val: "1.8 ETH",
+        width: 200,
+        showInfo: false,
+        desc: CampaignDescriptions["BPL"],
+        artist: "D. Savage",
+        sold: true
+    },
+    {
+        NFTName: "Wytd #007",
+        albumName: "TRUST",
+        color: "#e75480",
+        val: "1.5 ETH",
+        width: 200,
+        showInfo: false,
+        desc: CampaignDescriptions["TRUST"],
+        artist: "D. Savage",
+        sold: true
+    },
+    {
+        NFTName: "Opera #010",
+        albumName: "D PHOENIX",
+        color: "white",
+        val: "1.1 ETH",
+        width: 200,
+        showInfo: false,
+        desc: CampaignDescriptions["D PHOENIX"],
+        artist: "D. Savage",
+        sold: true
+    },]
+}
+
+const LocalNFTMapper = {
+    "Milo7": Milo7NFTs,
+    "Ali2": Ali2NFTs,
+    "Walk5": Walk5NFTs
+}
 
 const Tab = createMaterialTopTabNavigator();
 
@@ -101,16 +237,17 @@ export default function OtherProfileScreen({ route }) {
     let userName = route.params.userName;
 
     // maybe put in state
-    let purchasedNFTs = userDetails["purchasedNFTs"];
+    let purchasedNFTs = LocalNFTMapper[userName];
 
     function renderItem({ item }, props) {
         item.showInfo = true;
-        return <PressableNFTImage NFTDetails={item} />
+        return <PressableNFTImage key={uuid.v4()} NFTDetails={item} />
     }
 
     function ArtistsNFTs(props) {
 
-        return (<FlatList contentContainerStyle={styles.NFTContainer} numColumns={2} keyExtractor={item => item.NFTName} data={props.data} renderItem={(item, index) => renderItem(item, props)} />)
+        return (<FlatList contentContainerStyle={styles.NFTContainer} numColumns={2} keyExtractor={(item, index) => (item.NFTName + uuid.v4())} data={props.data} renderItem={(item, index) => renderItem(item, props)
+        } />)
     }
 
     let artists = Object.keys(purchasedNFTs);

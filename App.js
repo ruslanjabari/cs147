@@ -8,6 +8,7 @@ import ProfileScreen from './screens/ProfileScreen';
 import UserDetailsProvider from './assets/contextProviders/UserDetailsProvider';
 import HomeFeedProvider from './assets/contextProviders/HomeFeedProvider';
 import NFTsProvider from './assets/contextProviders/NFTsProvider';
+import { enableScreens } from 'react-native-screens';
 
 import {
   ArtistNFTScreen,
@@ -47,6 +48,8 @@ import {
 } from '@expo-google-fonts/dosis';
 
 import { Righteous_400Regular } from '@expo-google-fonts/righteous';
+
+enableScreens(true);
 
 const screenOptionsHeader = ({ navigation }) => ({
   headerLeft: () => <Text style={styles.teamName}>entourage</Text>,
@@ -95,6 +98,7 @@ export default function App() {
 
   function SparklesStack() {
     const SparklesStack = createStackNavigator();
+
     return (
       <SparklesStack.Navigator initialRouteName="ArtistsFeed" screenOptions={{ title: null }}>
         <SparklesStack.Screen
@@ -168,13 +172,16 @@ export default function App() {
     color: "#C4C4C4",
     fontFamily: 'Dosis_700Bold'
   }
+
   console.disableYellowBox = true;
+
   return (
     <NavigationContainer theme={navTheme}>
       <NFTsProvider>
         <UserDetailsProvider>
           <HomeFeedProvider>
             <Tab.Navigator
+              lazy={false}
               initialRouteName="HomeStack"
               screenOptions={({ route }) => ({
                 tabBarIcon: ({ focused }) => {
