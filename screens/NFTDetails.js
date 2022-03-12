@@ -11,10 +11,10 @@ import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 import { Dondalicious } from '../assets/icons';
 
 const Communities = [
-  { 'Kanye West': { name: 'TeamYe', mem: '21,045', icon: <Dondalicious /> } },
-  { Drake: { ClubStrokes: '5,671' } },
-  { 'The Strokes': { DrakeZone: '32,135' } },
-  { 'D. Savage': { DSavCente: 'r-934' } },
+  { 'Kanye West': { albumName: 'TeamYe', NFTName: 'TeamYe', mem: '21,045' } },
+  { Drake: { albumName: 'ClubStrokes', NFTName: 'ClubStrokes', mem: '5,671' } },
+  { 'The Strokes': { albumName: 'DrakeZone', NFTName: 'DrakeZone', mem: '32,135' } },
+  { 'D. Savage': { albumName: 'DSavCente', NFTName: 'DSavCente', mem: '934' } },
 ];
 
 export default function NFTDetails({ navigation, route }) {
@@ -124,7 +124,7 @@ export default function NFTDetails({ navigation, route }) {
                     setUserDetails({
                       ...userDetails,
                       potentialCommunities: [
-                        Communities.find((artist) => (artist = artistName())),
+                        Communities.find((artist) => Object.keys(artist)[0] === artistName()),
                         ...userDetails['potentialCommunities'],
                       ],
                       purchasedNFTs: {

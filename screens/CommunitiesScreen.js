@@ -7,13 +7,16 @@ import Carousel from 'react-native-snap-carousel';
 
 import { Dondalicious, ProfileIconUnselected } from '../assets/icons';
 import { Colors } from '../assets/themes';
+import { useContext } from 'react';
+import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 
-const communityComponent = (props) => {
+const communityComponent = ({ item }) => {
+  console.log(item);
   return (
     <View style={styles.communityComponentContainer}>
       <Pressable onPress={() => {}} style={styles.communityComponent}>
         {/* ^ pass in */}
-        <Dondalicious />
+        {/* <Dondalicious /> */}
       </Pressable>
       <Text style={styles.communityText}>101,042 Members</Text>
     </View>
@@ -22,8 +25,8 @@ const communityComponent = (props) => {
 
 export default function CommunitiesScreen() {
   let navigation = useNavigation();
-  const [data, setData] = useState([1, 2]);
-
+  const [data, setData] = useState(useContext(UserDetailsContext));
+  console.log(data);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

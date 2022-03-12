@@ -15,17 +15,18 @@ export default function JoinIndividualCommunityScreen({ route }) {
   const [userDetails, setUserDetails] = useContext(UserDetailsContext);
   let navigation = useNavigation();
 
-  let communityObj = {
-    NFTName: 'DSavCenter',
-    albumName: 'DSavCenter',
-    color: '',
-    desc: 'Exclusive community available to fans who own NFTs from DSavCenter NFT Campaigns.',
-    showInfo: false,
-    val: 0,
-    width: 250,
-    artist: 'D. Savage',
-    sold: false,
-  };
+  //   let communityObj = {
+  //     NFTName: 'DSavCenter',
+  //     albumName: 'DSavCenter',
+  //     color: '',
+  //     desc: 'Exclusive community available to fans who own NFTs from DSavCenter NFT Campaigns.',
+  //     showInfo: false,
+  //     val: 0,
+  //     width: 250,
+  //     artist: 'D. Savage',
+  //     sold: false,
+  //   };
+  let communityObj = {};
 
   console.log('da route params are ', route.params);
 
