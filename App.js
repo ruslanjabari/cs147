@@ -23,7 +23,8 @@ import {
   JoinIndividualCommunityScreen,
   FinalJoinCommunitiesScreen,
   MessageList,
-  MessagingScreen
+  MessagingScreen,
+  Analytics
 } from './screens';
 
 import {
@@ -167,6 +168,12 @@ export default function App() {
         <SparklesStack.Screen
           name="NFTDetails"
           component={NFTDetails}
+          options={screenOptionsHeaderWithBack}
+        />
+
+        <SparklesStack.Screen
+          name="Analytics"
+          component={Analytics}
           options={screenOptionsHeaderWithBack}
         />
       </SparklesStack.Navigator>

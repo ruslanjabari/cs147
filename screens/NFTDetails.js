@@ -153,7 +153,10 @@ export default function NFTDetails({ navigation, route }) {
               <Text style={styles.footerText}>PURCHASED</Text>
             </View>
           )}
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate('EXPLORE', {
+          screen: 'Analytics',
+          params: route.params,
+        })}>
           <PiechartIcon />
           <Text style={styles.footerText}>ANALYTICS</Text>
         </Pressable>
