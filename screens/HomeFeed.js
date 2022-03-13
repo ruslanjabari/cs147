@@ -5,7 +5,7 @@ import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
 export default function HomeFeed() {
   const [homeFeed, setHomeFeed] = useContext(HomeFeedContext);
-
+  // console.log(homeFeed, "debughomefeed")
   return (
     <SafeAreaView style={styles.container}>
       <FlatList

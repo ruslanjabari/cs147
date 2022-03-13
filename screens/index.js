@@ -9,6 +9,8 @@ import HomeFeed from './HomeFeed';
 import OtherProfileScreen from './OtherProfileScreen';
 import JoinIndividualCommunityScreen from './JoinIndividualCommunityScreen';
 import FinalJoinCommunitiesScreen from './FinalJoinCommunitiesScreen';
+import MessageList from './MessageList';
+import MessagingScreen from './MessagingScreen';
 
 export {
   ArtistNFTScreen,
@@ -22,4 +24,6 @@ export {
   OtherProfileScreen,
   JoinIndividualCommunityScreen,
   FinalJoinCommunitiesScreen,
+  MessageList,
+  MessagingScreen
 };

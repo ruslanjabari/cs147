@@ -12,11 +12,11 @@ import PressableNFTImage from './PressableNFTImage';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
 export default function Post(props) {
-  const { user, action, item, likes, time, NFTDetails, hardCoded } = props.item;
+  // console.log(props.item, "ITEM PROPS")
+  const { user, action, item, likes, artist, time, NFTDetails } = props.item;
   // const [liked, setLiked] = React.useState(false);
-  console.log(props.item);
-  const [artist, _] = useState(NFTDetails.artist);
   const [homeFeed, setHomeFeed] = useContext(HomeFeedContext);
+  // console.log(homeFeed, "HOME FEEd")
   const [liked, setLiked] = useState(
     homeFeed.forEach((post) => {
       if (
@@ -32,6 +32,7 @@ export default function Post(props) {
     })
   );
 
+  // console.log(artist, "THIS IS AARTIST")
   return (
     <View style={styles.post}>
       <View style={styles.postHeader}>
@@ -48,7 +49,7 @@ export default function Post(props) {
         </View>
       </View>
       <View style={styles.postImage}>
-        {!hardCoded ? <PressableNFTImage NFTDetails={NFTDetails} /> : <Dondalicious />}
+        {NFTDetails ? <PressableNFTImage NFTDetails={NFTDetails} /> : <Dondalicious />}
       </View>
       <View style={styles.postFooter}>
         <View style={styles.timestampContainer}>
@@ -71,6 +72,7 @@ export default function Post(props) {
                     post.time === time
                   );
                 });
+
                 newHomeFeed[postIndex].liked = !newHomeFeed[postIndex].liked;
                 if (newHomeFeed[postIndex].liked) newHomeFeed[postIndex].likes++;
                 else newHomeFeed[postIndex].likes--;
@@ -127,9 +129,6 @@ const styles = StyleSheet.create({
   },
   postImage: {
     alignItems: 'center',
-    marginLeft: 'auto',
-    justifyContent: 'center',
-    width: '100%',
   },
   nft: {
     marginBottom: 10,

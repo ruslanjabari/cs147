@@ -24,10 +24,10 @@ export default function PurchaseScreen({ navigation, route }) {
         </View>
       </View>
       <View style={styles.footer}>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate("COMMUNITIES", { screen: "JoinCommunitiesScreen" })}>
           <Text style={styles.footerText}>JOIN COMMUNITY</Text>
         </Pressable>
-        <Pressable style={styles.button}>
+        <Pressable style={styles.button} onPress={() => navigation.navigate("PROFILE", { screen: "ProfileScreen" })}>
           <Text style={styles.footerText}>VIEW ON PROFILE</Text>
         </Pressable>
       </View>
