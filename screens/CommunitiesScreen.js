@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // TASK 3 S2
 import { useNavigation } from '@react-navigation/native';
-import { View, Pressable, SafeAreaView, StyleSheet, Text } from 'react-native';
+import { View, Pressable, SafeAreaView, StyleSheet, Text, FlatList } from 'react-native';
 
 import Carousel from 'react-native-snap-carousel';
 
@@ -9,28 +9,42 @@ import { Dondalicious, ProfileIconUnselected } from '../assets/icons';
 import { Colors } from '../assets/themes';
 import { useContext } from 'react';
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
+import PressableNFTImage from '../components/PressableNFTImage';
 
-const communityComponent = ({ item }) => {
-  console.log('in da itwem', item);
+function communityComponent({ item }, navigation) {
+  // console.log('in da itwem', item);
+  //  item.prop.joinedCommunities
+  // console.log(typeof item);
+  // if (typeof item === 'string') return null;
   return (
     <View style={styles.communityComponentContainer}>
-      <Pressable
+      {/* <Pressable
         onPress={() => {
           // navigate to individual community screen
         }}
-        style={styles.communityComponent}>
-        {/* ^ pass in */}
-        {/* <Dondalicious /> */}
-      </Pressable>
-      <Text style={styles.communityText}>101,042 Members</Text>
+        style={styles.communityComponent}> */}
+      {/* ^ pass in */}
+      {/* <Dondalicious /> */}
+      {/* </Pressable> */}
+      <View style={{ width: '100%', margin: 30 }}>
+        <PressableNFTImage
+          noNav
+          NFTDetails={item}
+          handler={() => navigation.navigate('IndividualCommunityScreen', { item })}
+        />
+      </View>
+      {item && <Text style={styles.communityText}>{item.mem} Members</Text>}
     </View>
   );
-};
+}
 
 export default function CommunitiesScreen() {
   let navigation = useNavigation();
-  const [data, setData] = useState(useContext(UserDetailsContext))[0];
-  console.log('dere da data', data);
+  const data = useContext(UserDetailsContext)[0].joinedCommunities.filter(
+    (obj) => typeof obj !== 'string'
+  );
+  // alert(JSON.stringify(data));
+  // console.log('dere da data', useContext(UserDetailsContext)[0].joinedCommunities);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -38,14 +52,21 @@ export default function CommunitiesScreen() {
         <Text style={styles.headerText}>Your Communities</Text>
       </View>
       {data && (
+        <View>
+          <Text style={{ fontFamily: 'Dosis_400Regular', color: Colors.darkgray }}>
+            Swipe to see other communities!
+          </Text>
+        </View>
+      )}
+      {
         <Carousel
           layout={'default'}
           data={data}
-          renderItem={communityComponent}
+          renderItem={(item) => communityComponent(item, navigation)}
           sliderWidth={400}
           itemWidth={400}
         />
-      )}
+      }
       <View style={{ flex: 1 }}>
         <Pressable
           style={styles.button}
@@ -86,6 +107,7 @@ const styles = StyleSheet.create({
     fontFamily: 'Dosis_700Bold',
     fontSize: 24,
     margin: 10,
+    marginTop: -30,
   },
   button: {
     backgroundColor: Colors.black,
