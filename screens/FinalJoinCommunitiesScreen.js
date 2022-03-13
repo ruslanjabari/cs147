@@ -1,4 +1,4 @@
-import { Pressable, View, SafeAreaView, StyleSheet, Text, Alert } from 'react-native';
+import { Pressable, View, SafeAreaView, StyleSheet, Text } from 'react-native';
 import Bound2 from '../assets/icons/Bound2.svg';
 import ShoppingCartIcon from '../assets/icons/ShoppingCartIcon.svg';
 import PiechartIcon from '../assets/icons/Piechart.svg';
@@ -68,7 +68,7 @@ export default function FinalJoinCommunityScreen({ route }) {
       joinedCommunities: commus,
     });
     // console.log('\n\ntmp', tmp, '\n\n', campaignObj);
-    alert('done');
+    // alert('done');
     // navigation.navigate('CommunitiesScreen', { screen: 'COMMUNITIES', params: {} });
     navigation.navigate('CommunitiesScreen');
   };
@@ -89,7 +89,7 @@ export default function FinalJoinCommunityScreen({ route }) {
           <PressableNFTImage
             NFTDetails={communityObj}
             isCampaign={true}
-            handler={handleJoin}
+            handler={setTimeout(() => handleJoin(), 4000)}
             noNav
           />
         </View>
