@@ -1,17 +1,46 @@
 // TASK 3 S3
 
-import { useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
 
 import { SafeAreaView, View, FlatList, Pressable, Text, StyleSheet } from 'react-native';
 
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
+import { PressableNFTImage } from '../components';
 
-const Elem = ({ item }) => {
-  const navigation = useNavigation();
+const Elem = (item) => {
+  // const navigation = useNavigation();
+  // console.log('da item', item.prop[Object.keys(item.prop)[0]]);
+  const handleAdd = () => {
+    const [userDetails, setUserDetails] = useContext(UserDetailsContext);
+    setUserDetails({
+      ...userDetails,
+      joinedCommunities: [
+        item.prop[Object.keys(item.prop)[0]],
+        ...userDetails['joinedCommunities'],
+      ],
+    });
+  };
   return (
-    <Pressable onPress={() => navigation.navigate(props.NFTName)} style={styles.button}>
-      {Object.keys(item).map((key) => key.icon)}
+    // <Pressable
+    //   onPress={() => navigation.navigate('JoinIndividualCommunityScreen', { item })}
+    //   style={styles.button}>
+    <Pressable
+      style={{
+        width: '100%',
+        justifyContent: 'center',
+      }}
+      // doesn't work because PressableNFT?
+      onPress={() => handleAdd()}>
+      <PressableNFTImage
+        NFTDetails={{
+          ...item.prop[Object.keys(item.prop)[0]],
+          width: '100%',
+          showInfo: true,
+          parentNav: 'COMMUNITIES',
+          destScreen: 'JoinIndividualCommunityScreen',
+        }}
+        isCampaign={true}
+      />
       {/* ^ pass in through item */}
     </Pressable>
   );
@@ -19,16 +48,16 @@ const Elem = ({ item }) => {
 
 const renderItem = ({ item }) => (
   <View style={styles.renderItem}>
-    <Elem />
-    {false ? null : <Elem props={item.icon} />}
+    <Elem prop={item} />
+    {/* {false ? null : <Elem item={item} />} */}
     {/* ^^ case when only one NFT is remaining, this does not handle it, just flagging it! */}
   </View>
 );
 
 export default function JoinCommunitiesScreen() {
-  const data = useContext(UserDetailsContext)['potentialCommunities'] || [];
-  console.log(useContext(UserDetailsContext));
-  // { 'Kanye West': { name: 'TeamYe', mem: '21,045', icon: <Dondalicious /> } },
+  const data = useContext(UserDetailsContext)[0].potentialCommunities || [];
+  // { 'Kanye West': { name: 'TeamYe', mem: '21,045' } },
+  // console.log('da in da data', data);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>

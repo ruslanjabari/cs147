@@ -23,13 +23,14 @@ const ItemSeparatorComponent = () => (
   />
 );
 
-export default function IndividualCommunityScreen() {
+export default function IndividualCommunityScreen({ route }) {
+  const community = route.params;
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <ChatIconUnselected />
         <View style={styles.headerTextGroup}>
-          <Text style={styles.boldText}>DONDAlicious</Text>
+          <Text style={styles.boldText}>{community.NFTName}</Text>
           <Text style={styles.regularText}>101,042 Members</Text>
         </View>
         <DiscordIcon />
@@ -38,7 +39,7 @@ export default function IndividualCommunityScreen() {
       <FlatList
         data={[1, 2, 3]}
         renderItem={renderItem}
-        keyExtractor={(item, index) => index.toString()}
+        keyExtractor={(_, index) => index.toString()}
         ItemSeparatorComponent={ItemSeparatorComponent}
         ListHeaderComponent={ItemSeparatorComponent}
         ListFooterComponent={ItemSeparatorComponent}

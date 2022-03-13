@@ -1,20 +1,24 @@
-import React from 'react'
-import { View, Text, StyleSheet, Pressable } from 'react-native'
+import React from 'react';
+import { View, Text, StyleSheet, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import {
-    Bound2, Yeezus, LifeOfPablo, Donda, Views,
-    CLB,
-    Scorpion,
-    IsThisIt,
-    Angles,
-    Room,
-    DPhoenix,
-    TrustNoOne,
-    BPL,
-    TeamYe,
-    ClubStrokes,
-    DrakeZone,
-    DSavCenter
+  Bound2,
+  Yeezus,
+  LifeOfPablo,
+  Donda,
+  Views,
+  CLB,
+  Scorpion,
+  IsThisIt,
+  Angles,
+  Room,
+  DPhoenix,
+  TrustNoOne,
+  BPL,
+  TeamYe,
+  ClubStrokes,
+  DrakeZone,
+  DSavCenter,
 } from '../assets/icons/';
 /*
 NFTDetails Object with Following Form:
@@ -29,81 +33,130 @@ NFTDetails Object with Following Form:
 }
 */
 
-export default function PressableNFTImage({ NFTDetails, isCampaign }) {
-    let { NFTName, albumName, color, val, width, showInfo, desc, artist } = NFTDetails;
+export default function PressableNFTImage({ NFTDetails, isCampaign, handler, noNav }) {
+  let {
+    NFTName,
+    albumName,
+    color,
+    val,
+    width,
+    showInfo,
+    desc,
+    artist,
+    parentNav = 'EXPLORE',
+    destScreen = 'NFTDetails',
+  } = NFTDetails;
 
-    const NFTProps = {
-        width: width,
-        fill: color,
-        fillOpacity: 0.4,
-        style: { marginBottom: 10 }
-    }
+  const NFTProps = {
+    width: width,
+    fill: color,
+    fillOpacity: 0.4,
+    style: { marginBottom: 10 },
+  };
 
-    const campaignProps = {
-        width: width,
-        style: { marginBottom: 10 }
-    }
+  const campaignProps = {
+    width: width,
+    style: { marginBottom: 10 },
+  };
 
-    const NFTMapper = {
-        "YEEZUS": <Yeezus {...NFTProps} />,
-        "DONDA": <Donda {...NFTProps} />,
-        "THE L": <LifeOfPablo {...NFTProps} />,
-        "VIEWS": <Views {...NFTProps} />,
-        "CLB": <CLB {...NFTProps} />,
-        "SCORPION": <Scorpion {...NFTProps} />,
-        "IS THIS IT": <IsThisIt {...NFTProps} />,
-        "ANGLES": <Angles {...NFTProps} />,
-        "ROOM": <Room {...NFTProps} />,
-        "D PHOENIX": <DPhoenix {...NFTProps} />,
-        "TRUST": <TrustNoOne {...NFTProps} />,
-        "BPL": <BPL {...NFTProps} />,
-        "TeamYe": <TeamYe {...campaignProps} />,
-        "ClubStrokes": <ClubStrokes {...campaignProps} />,
-        "DrakeZone": <DrakeZone {...campaignProps} />,
-        "DSavCenter": <DSavCenter {...campaignProps} />
-    }
+  const NFTMapper = {
+    YEEZUS: <Yeezus {...NFTProps} />,
+    DONDA: <Donda {...NFTProps} />,
+    'THE L': <LifeOfPablo {...NFTProps} />,
+    VIEWS: <Views {...NFTProps} />,
+    CLB: <CLB {...NFTProps} />,
+    SCORPION: <Scorpion {...NFTProps} />,
+    'IS THIS IT': <IsThisIt {...NFTProps} />,
+    ANGLES: <Angles {...NFTProps} />,
+    ROOM: <Room {...NFTProps} />,
+    'D PHOENIX': <DPhoenix {...NFTProps} />,
+    TRUST: <TrustNoOne {...NFTProps} />,
+    BPL: <BPL {...NFTProps} />,
+    TeamYe: <TeamYe {...campaignProps} />,
+    ClubStrokes: <ClubStrokes {...campaignProps} />,
+    DrakeZone: <DrakeZone {...campaignProps} />,
+    DSavCenter: <DSavCenter {...campaignProps} />,
+  };
 
-    let navigation = useNavigation();
-    let destScreen;
-    let parentNav;
+  let navigation = useNavigation();
+  //   let destScreen;
+  //   let parentNav;
 
-    if (isCampaign) {
-        parentNav = "COMMUNITIES"
-        destScreen = "IndividualCommunityScreen"
-        showInfo = true;
-    } else {
-        parentNav = "EXPLORE";
-        destScreen = "NFTDetails";
-    }
+  //   isCampaign = true;
 
-    return (
-        <Pressable
-            style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', position: 'relative' }}
-            onPress={() => navigation.navigate(parentNav, { screen: destScreen, params: NFTDetails })}>
+  // if (isCampaign) {
+  // parentNav = 'COMMUNITIES';
+  // destScreen = 'IndividualCommunityScreen';
+  // showInfo = true;
+  // console.log('MAP', albumName);
+  // }
+  //   else {
+  //     parentNav = 'EXPLORE';
+  //     destScreen = 'NFTDetails';
+  //   }
 
-            {NFTMapper[albumName]}
-            {isCampaign && <Text style={{ position: 'absolute', left: 0, right: 0, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 26, marginLeft: 'auto', marginRight: 'auto', textAlign: 'center' }}>
-                {albumName}
-            </Text>
-            }
-            {
-                (!isCampaign && showInfo) &&
-                <Text style={{ position: 'absolute', top: 10, left: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
-                    {NFTName}
-                </Text>
-            }
-            {
-                (!isCampaign && showInfo) &&
-                <Text style={{ position: 'absolute', bottom: 15, right: 40, color: 'white', fontFamily: 'Dosis_700Bold', fontSize: 16 }}>
-                    {val}
-                </Text>
-            }
-        </Pressable >
-    )
+  return (
+    <Pressable
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        // alignItems: 'center',
+        position: 'relative',
+      }}
+      onPress={
+        noNav
+          ? () => handler()
+          : () => navigation.navigate(parentNav, { screen: destScreen, params: NFTDetails })
+      }>
+      {NFTMapper[albumName]}
+      {isCampaign && (
+        <Text
+          style={{
+            // position: 'absolute',
+            left: 0,
+            right: 0,
+            color: 'black',
+            fontFamily: 'Dosis_700Bold',
+            fontSize: 26,
+            marginLeft: 'auto',
+            marginRight: 'auto',
+            // textAlign: 'center',
+          }}>
+          {NFTName}
+        </Text>
+      )}
+      {!isCampaign && showInfo && (
+        <Text
+          style={{
+            position: 'absolute',
+            top: 10,
+            left: 40,
+            color: 'white',
+            fontFamily: 'Dosis_700Bold',
+            fontSize: 16,
+          }}>
+          {NFTName}
+        </Text>
+      )}
+      {!isCampaign && showInfo && (
+        <Text
+          style={{
+            position: 'absolute',
+            bottom: 15,
+            right: 40,
+            color: 'white',
+            fontFamily: 'Dosis_700Bold',
+            fontSize: 16,
+          }}>
+          {val}
+        </Text>
+      )}
+    </Pressable>
+  );
 }
 
 const styles = StyleSheet.create({
-    nft: {
-        marginBottom: 10
-    }
+  nft: {
+    marginBottom: 10,
+  },
 });
