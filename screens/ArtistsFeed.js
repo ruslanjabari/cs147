@@ -69,28 +69,30 @@ export default function ArtistsFeed() {
 
       <View style={styles.listContainer}>
         {/* no time */}
-        {/* <FlatList
-          data={data}
-          keyExtractor={(_, index) => index.toString()}
-          renderItem={({ item, item: { ArtistSvg } }) => (
-            <Pressable
-              onPress={(item) =>
-                navigation.navigate('EXPLORE', {
-                  screen: 'ArtistNFTScreen',
-                  params: { artist: item.artist },
-                })
-              }
-              style={styles.artistInfo}>
-              <View style={styles.artistInfoGroup}>
-                <ArtistSvg />
-                <Text style={styles.artistName}>{item.artist}</Text>
-              </View>
-              <ForwardIcon />
-            </Pressable>
-          )}
-        /> */}
+        <View style={{ flex: 1, height: '100%', margin: 10 }}>
+          <FlatList
+            data={data}
+            keyExtractor={(_, index) => index.toString()}
+            renderItem={({ item, item: { ArtistSvg } }) => (
+              <Pressable
+                onPress={() =>
+                  navigation.navigate('EXPLORE', {
+                    screen: 'ArtistNFTScreen',
+                    params: { artist: item.artist },
+                  })
+                }
+                style={styles.artistInfo}>
+                <View style={styles.artistInfoGroup}>
+                  <ArtistSvg />
+                  <Text style={styles.artistName}>{item.artist}</Text>
+                </View>
+                <ForwardIcon />
+              </Pressable>
+            )}
+          />
+        </View>
 
-        <Pressable
+        {/* <Pressable
           onPress={() =>
             navigation.navigate('EXPLORE', {
               screen: 'ArtistNFTScreen',
@@ -145,7 +147,7 @@ export default function ArtistsFeed() {
             <Text style={styles.artistName}>D. Savage</Text>
           </View>
           <ForwardIcon />
-        </Pressable>
+        </Pressable> */}
       </View>
     </SafeAreaView>
   );
@@ -164,15 +166,15 @@ const styles = StyleSheet.create({
   artistInfo: {
     backgroundColor: Colors.gray,
     display: 'flex',
-    flex: 1,
+    // flex: 1,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-around',
-    width: '85%',
-    height: '10%',
+    // width: '85%',
     borderRadius: 52,
     marginBottom: 10,
-    height: '60%',
+    // height: '60%',
+    height: 80,
   },
   artistList: {},
   listContainer: {
