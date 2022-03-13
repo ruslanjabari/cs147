@@ -22,6 +22,8 @@ import {
   OtherProfileScreen,
   JoinIndividualCommunityScreen,
   FinalJoinCommunitiesScreen,
+  MessageList,
+  MessagingScreen
 } from './screens';
 
 import {
@@ -57,6 +59,11 @@ const screenOptionsHeader = ({ navigation }) => ({
   headerLeft: () => <Text style={styles.teamName}>entourage</Text>,
   headerRight: () => (
     <View style={styles.headerRightSearchSend}>
+      <Pressable
+        onPress={() => navigation.navigate('HOME', { screen: 'MessageList', params: {} })}>
+        <DMIcon />
+      </Pressable>
+
       <Pressable
         onPress={() => navigation.navigate('HOME', { screen: 'SearchScreen', params: {} })}>
         <SearchIcon style={styles.searchIcon} />
@@ -108,7 +115,7 @@ export default function App() {
     const HomeStack = createStackNavigator();
 
     return (
-      <HomeStack.Navigator initialRouteName="HomeFeed" screenOptions={{ title: null }}>
+      <HomeStack.Navigator lazy={false} initialRouteName="HomeFeed" screenOptions={{ title: null }}>
         <HomeStack.Screen name="HomeScreen" component={HomeFeed} options={screenOptionsHeader} />
         <HomeStack.Screen
           name="SearchScreen"
@@ -120,7 +127,18 @@ export default function App() {
           component={OtherProfileScreen}
           options={screenOptionsHeaderWithBack}
         />
+        <HomeStack.Screen
+          name="MessageList"
+          component={MessageList}
+          options={screenOptionsHeaderWithBack}
+        />
+        <HomeStack.Screen
+          name="MessagingScreen"
+          component={MessagingScreen}
+          options={screenOptionsHeaderWithBack}
+        />
       </HomeStack.Navigator>
+
     );
   }
 
@@ -128,7 +146,7 @@ export default function App() {
     const SparklesStack = createStackNavigator();
 
     return (
-      <SparklesStack.Navigator initialRouteName="ArtistsFeed" screenOptions={{ title: null }}>
+      <SparklesStack.Navigator lazy={false} initialRouteName="ArtistsFeed" screenOptions={{ title: null }}>
         <SparklesStack.Screen
           name="ArtistsFeed"
           component={ArtistsFeed}
@@ -159,6 +177,7 @@ export default function App() {
     const CommunitiesStack = createStackNavigator();
     return (
       <CommunitiesStack.Navigator
+        lazy={false}
         initialRouteName="CommunitiesScreen"
         screenOptions={{ title: null }}>
         <CommunitiesStack.Screen
@@ -198,7 +217,7 @@ export default function App() {
   function ProfileStack() {
     const ProfileStack = createStackNavigator();
     return (
-      <ProfileStack.Navigator initialRouteName="ProfileScreen" screenOptions={{ title: null }}>
+      <ProfileStack.Navigator lazy={false} initialRouteName="ProfileScreen" screenOptions={{ title: null }}>
         <ProfileStack.Screen
           name="ProfileScreen"
           component={ProfileScreen}
@@ -263,26 +282,26 @@ export default function App() {
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>HOME</Text>
                       ) : (
-                        <Text style={TabBarLabelStyleInactive}>HOME</Text>
-                      ));
+                          <Text style={TabBarLabelStyleInactive}>HOME</Text>
+                        ));
                     case 'EXPLORE':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>EXPLORE</Text>
                       ) : (
-                        <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
-                      ));
+                          <Text style={TabBarLabelStyleInactive}>EXPLORE</Text>
+                        ));
                     case 'COMMUNITIES':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>COMMUNITIES</Text>
                       ) : (
-                        <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
-                      ));
+                          <Text style={TabBarLabelStyleInactive}>COMMUNITIES</Text>
+                        ));
                     case 'PROFILE':
                       return (label = focused ? (
                         <Text style={TabBarLabelStyleActive}>PROFILE</Text>
                       ) : (
-                        <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
-                      ));
+                          <Text style={TabBarLabelStyleInactive}>PROFILE</Text>
+                        ));
                   }
                   return label;
                 },

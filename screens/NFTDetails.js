@@ -32,7 +32,7 @@ export default function NFTDetails({ navigation, route }) {
   let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = route.params;
   let artistName = () => artist;
 
-  let purchasedNFTsFromArtist = userDetails['purchasedNFTs'][artist];
+  let purchasedNFTsFromArtist = userDetails['purchasedNFTs'][artistName()];
 
   if (purchasedNFTsFromArtist.includes(route.params) || route.params.sold) {
     sold = true;
@@ -91,7 +91,7 @@ export default function NFTDetails({ navigation, route }) {
               Alert.alert('Confirm Purchase', 'Are you sure you want to purchase this NFT?', [
                 {
                   text: 'Cancel',
-                  onPress: () => {},
+                  onPress: () => { },
                   style: 'cancel',
                 },
                 {
@@ -109,7 +109,7 @@ export default function NFTDetails({ navigation, route }) {
                         item: NFTName,
                         likes: 1,
                         liked: false, // hacky, you like your own
-                        artist: artist,
+                        artist: artistName(),
                         time: 'Just now',
                         NFTDetails: {
                           NFTName: NFTName,
@@ -149,10 +149,10 @@ export default function NFTDetails({ navigation, route }) {
             <Text style={styles.footerText}>PURCHASE</Text>
           </Pressable>
         ) : (
-          <View style={styles.button}>
-            <Text style={styles.footerText}>PURCHASED</Text>
-          </View>
-        )}
+            <View style={styles.button}>
+              <Text style={styles.footerText}>PURCHASED</Text>
+            </View>
+          )}
         <Pressable style={styles.button}>
           <PiechartIcon />
           <Text style={styles.footerText}>ANALYTICS</Text>

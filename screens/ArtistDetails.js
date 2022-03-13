@@ -28,7 +28,8 @@ import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvid
 
 export default function ArtistDetails({ artist }) {
   let [userDetails, setUserDetails] = useContext(UserDetailsContext);
-  let [follow, setFollow] = useState(!userDetails.following.includes(artist));
+  console.log(!(userDetails["following"].map(function (user) { return user.user }).includes(artist)), "RESULT")
+  let [follow, setFollow] = useState(!(userDetails["following"].map(function (user) { return user.user }).includes(artist)));
   let details;
 
   if (artist === 'Kanye West') {
@@ -41,6 +42,7 @@ export default function ArtistDetails({ artist }) {
     details = DSavageObj;
   }
 
+  console.log(userDetails["following"], "FOLLOWINGDOODS");
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -58,18 +60,18 @@ export default function ArtistDetails({ artist }) {
             <Pressable
               style={styles.button}
               onPress={() => {
-                if (!userDetails.following.includes(artist)) {
-                  setUserDetails({ ...userDetails, ...userDetails['following'].push(artist) });
+                if (!userDetails.following.map(function (user) { return user.user }).includes(artist)) {
+                  setUserDetails({ ...userDetails, ...userDetails['following'].push({ user: artist }) });
                   setFollow(true);
                 } else {
                   setUserDetails({
                     ...userDetails,
-                    ...userDetails['following'].splice(userDetails['following'].indexOf(artist), 1),
+                    ...userDetails['following'].splice(userDetails['following'].map(function (user) { return user.user }).indexOf(artist), 1),
                   });
                   setFollow(false);
                 }
               }}>
-              <Text style={styles.buttonText}>{follow ? 'FOLLOW' : 'UNFOLLOW'}</Text>
+              <Text style={styles.buttonText}>{!(userDetails["following"].map(function (user) { return user.user }).includes(artist)) ? 'FOLLOW' : 'UNFOLLOW'}</Text>
             </Pressable>
           </View>
         </View>

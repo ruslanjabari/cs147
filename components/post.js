@@ -12,9 +12,11 @@ import PressableNFTImage from './PressableNFTImage';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
 export default function Post(props) {
+  // console.log(props.item, "ITEM PROPS")
   const { user, action, item, likes, artist, time, NFTDetails } = props.item;
   // const [liked, setLiked] = React.useState(false);
   const [homeFeed, setHomeFeed] = useContext(HomeFeedContext);
+  // console.log(homeFeed, "HOME FEEd")
   const [liked, setLiked] = useState(
     homeFeed.forEach((post) => {
       if (
@@ -30,6 +32,7 @@ export default function Post(props) {
     })
   );
 
+  // console.log(artist, "THIS IS AARTIST")
   return (
     <View style={styles.post}>
       <View style={styles.postHeader}>
@@ -69,6 +72,7 @@ export default function Post(props) {
                     post.time === time
                   );
                 });
+
                 newHomeFeed[postIndex].liked = !newHomeFeed[postIndex].liked;
                 if (newHomeFeed[postIndex].liked) newHomeFeed[postIndex].likes++;
                 else newHomeFeed[postIndex].likes--;
