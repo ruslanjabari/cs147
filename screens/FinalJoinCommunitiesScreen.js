@@ -9,12 +9,14 @@ import { PressableNFTImage } from '../components';
 import { NFTsContext } from '../assets/contextProviders/NFTsProvider';
 import React, { useState, useContext } from 'react';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
-import { useEffect } from 'react/cjs/react.production.min';
+import { useNavigation } from '@react-navigation/native';
 
 const mapper = require('../components/mapper');
 
-export default function FinalJoinCommunityScreen({ navigation, route }) {
+export default function FinalJoinCommunityScreen({ route }) {
   const [userDetails, setUserDetails] = useContext(UserDetailsContext);
+
+  const navigation = useNavigation();
 
   //   let communityObj = {
   //     NFTName: 'DSavCenter',
@@ -46,13 +48,17 @@ export default function FinalJoinCommunityScreen({ navigation, route }) {
       }
     });
     tmp.splice(tmp.indexOf(campaignObj), 1);
+    let commus = userDetails['joinedCommunities'];
+    commus.push(campaignObj);
     setUserDetails({
       ...userDetails,
       potentialCommunities: tmp,
-      joinedCommunities: [...userDetails['joinedCommunities'], campaignObj],
+      joinedCommunities: commus,
     });
-    console.log('\n\ntmp', tmp, '\n\n', campaignObj);
+    // console.log('\n\ntmp', tmp, '\n\n', campaignObj);
     alert('done');
+    // navigation.navigate('CommunitiesScreen', { screen: 'COMMUNITIES', params: {} });
+    navigation.navigate('CommunitiesScreen');
   };
   return (
     <SafeAreaView style={styles.container}>

@@ -3,7 +3,6 @@ import { useContext } from 'react';
 import { Post } from '../components';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 
-
 export default function HomeFeed() {
   const [homeFeed, setHomeFeed] = useContext(HomeFeedContext);
 
@@ -12,7 +11,7 @@ export default function HomeFeed() {
       <FlatList
         data={homeFeed}
         renderItem={({ item }) => <Post item={item} />}
-        keyExtractor={(_, index) => index}
+        keyExtractor={(_, index) => index.toString()}
       />
     </SafeAreaView>
   );

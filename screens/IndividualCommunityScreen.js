@@ -7,8 +7,8 @@ const renderItem = ({ item }) => (
   <View style={styles.renderItemContainer}>
     <MusicNoteIcon />
     <View style={styles.eventDetails}>
-      <Text style={styles.eventHeader}>DONDA Tour</Text>
-      <Text style={styles.eventSubHeader}>Crypto.com Staduim</Text>
+      <Text style={styles.eventHeader}>{item.eventTitle || 'Donda Tour'}</Text>
+      <Text style={styles.eventSubHeader}>{item.eventLocation || 'Crypto.com Staduim'}</Text>
     </View>
     <ForwardIcon />
   </View>
@@ -24,20 +24,21 @@ const ItemSeparatorComponent = () => (
 );
 
 export default function IndividualCommunityScreen({ route }) {
-  const community = route.params;
+  const community = route.params.item;
+  console.log('community', community);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <ChatIconUnselected />
         <View style={styles.headerTextGroup}>
           <Text style={styles.boldText}>{community.NFTName}</Text>
-          <Text style={styles.regularText}>101,042 Members</Text>
+          <Text style={styles.regularText}>{community.mem} Members</Text>
         </View>
         <DiscordIcon />
       </View>
       <Text style={styles.flatListHeader}>Featured Events</Text>
       <FlatList
-        data={[1, 2, 3]}
+        data={community.events}
         renderItem={renderItem}
         keyExtractor={(_, index) => index.toString()}
         ItemSeparatorComponent={ItemSeparatorComponent}
@@ -87,6 +88,8 @@ const styles = StyleSheet.create({
   eventDetails: {
     marginLeft: 30,
     marginRight: 30,
+    justifyContent: 'center',
+    width: '50%',
   },
   eventHeader: {
     fontFamily: 'Dosis_400Regular',

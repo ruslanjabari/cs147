@@ -10,7 +10,7 @@ const HomeFeedProvider = (props) => {
       item: 'Bound 2 #004',
       likes: 4,
       liked: false, // hacky fix instead of storing users who liked
-      artist: 'Ye',
+      // artist: 'Ye',
       time: '15 minutes ago',
       NFTDetails: {
         NFTName: 'BOUND 2 #004',
@@ -32,7 +32,11 @@ const HomeFeedProvider = (props) => {
       liked: false, // hacky fix instead of storing users who liked
       artist: 'Ye',
       time: '23 minutes ago',
-      NFTDetails: null,
+      hardCoded: true,
+      NFTDetails: {
+        artist: 'Kanye West',
+        albumName: 'DONDA',
+      },
     },
   ]);
 
