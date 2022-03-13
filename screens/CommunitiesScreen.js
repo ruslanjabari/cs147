@@ -11,10 +11,14 @@ import { useContext } from 'react';
 import { UserDetailsContext } from '../assets/contextProviders/UserDetailsProvider';
 
 const communityComponent = ({ item }) => {
-  console.log(item);
+  console.log('in da itwem', item);
   return (
     <View style={styles.communityComponentContainer}>
-      <Pressable onPress={() => {}} style={styles.communityComponent}>
+      <Pressable
+        onPress={() => {
+          // navigate to individual community screen
+        }}
+        style={styles.communityComponent}>
         {/* ^ pass in */}
         {/* <Dondalicious /> */}
       </Pressable>
@@ -25,21 +29,23 @@ const communityComponent = ({ item }) => {
 
 export default function CommunitiesScreen() {
   let navigation = useNavigation();
-  const [data, setData] = useState(useContext(UserDetailsContext));
-  console.log(data);
+  const [data, setData] = useState(useContext(UserDetailsContext))[0];
+  console.log('dere da data', data);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <ProfileIconUnselected />
         <Text style={styles.headerText}>Your Communities</Text>
       </View>
-      <Carousel
-        layout={'default'}
-        data={data}
-        renderItem={communityComponent}
-        sliderWidth={400}
-        itemWidth={400}
-      />
+      {data && (
+        <Carousel
+          layout={'default'}
+          data={data}
+          renderItem={communityComponent}
+          sliderWidth={400}
+          itemWidth={400}
+        />
+      )}
       <View style={{ flex: 1 }}>
         <Pressable
           style={styles.button}

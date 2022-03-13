@@ -33,8 +33,19 @@ NFTDetails Object with Following Form:
 }
 */
 
-export default function PressableNFTImage({ NFTDetails, isCampaign }) {
-  let { NFTName, albumName, color, val, width, showInfo, desc, artist } = NFTDetails;
+export default function PressableNFTImage({ NFTDetails, isCampaign, handler, noNav }) {
+  let {
+    NFTName,
+    albumName,
+    color,
+    val,
+    width,
+    showInfo,
+    desc,
+    artist,
+    parentNav = 'EXPLORE',
+    destScreen = 'NFTDetails',
+  } = NFTDetails;
 
   const NFTProps = {
     width: width,
@@ -68,20 +79,21 @@ export default function PressableNFTImage({ NFTDetails, isCampaign }) {
   };
 
   let navigation = useNavigation();
-  let destScreen;
-  let parentNav;
+  //   let destScreen;
+  //   let parentNav;
 
   //   isCampaign = true;
 
-  if (isCampaign) {
-    parentNav = 'COMMUNITIES';
-    destScreen = 'IndividualCommunityScreen';
-    showInfo = true;
-    console.log('MAP', albumName);
-  } else {
-    parentNav = 'EXPLORE';
-    destScreen = 'NFTDetails';
-  }
+  // if (isCampaign) {
+  // parentNav = 'COMMUNITIES';
+  // destScreen = 'IndividualCommunityScreen';
+  // showInfo = true;
+  // console.log('MAP', albumName);
+  // }
+  //   else {
+  //     parentNav = 'EXPLORE';
+  //     destScreen = 'NFTDetails';
+  //   }
 
   return (
     <Pressable
@@ -91,7 +103,11 @@ export default function PressableNFTImage({ NFTDetails, isCampaign }) {
         // alignItems: 'center',
         position: 'relative',
       }}
-      onPress={() => navigation.navigate(parentNav, { screen: destScreen, params: NFTDetails })}>
+      onPress={
+        noNav
+          ? () => handler()
+          : () => navigation.navigate(parentNav, { screen: destScreen, params: NFTDetails })
+      }>
       {NFTMapper[albumName]}
       {isCampaign && (
         <Text
@@ -102,8 +118,8 @@ export default function PressableNFTImage({ NFTDetails, isCampaign }) {
             color: 'black',
             fontFamily: 'Dosis_700Bold',
             fontSize: 26,
-            // marginLeft: 'auto',
-            // marginRight: 'auto',
+            marginLeft: 'auto',
+            marginRight: 'auto',
             // textAlign: 'center',
           }}>
           {NFTName}

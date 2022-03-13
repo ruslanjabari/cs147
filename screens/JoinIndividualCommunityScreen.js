@@ -26,13 +26,13 @@ export default function JoinIndividualCommunityScreen({ route }) {
   //     artist: 'D. Savage',
   //     sold: false,
   //   };
-  let communityObj = {};
+  let communityObj = route.params;
 
-  console.log('da route params are ', route.params);
+  // console.log('da route params are ', route.params);
 
   // this will be actual props, only NFTName, albumName rlly relevant.
   // let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = route.params;
-  let { NFTName, albumName, color, desc, showInfo, val, width, artist, sold } = communityObj;
+  let { NFTName, mem, color, desc, showInfo, val, width, artist, sold } = communityObj;
 
   return (
     <SafeAreaView style={styles.container}>
@@ -41,12 +41,13 @@ export default function JoinIndividualCommunityScreen({ route }) {
           style={{
             display: 'flex',
             justifyContent: 'center',
-            alignItems: 'center',
             position: 'relative',
+            width: '100%',
           }}>
           <PressableNFTImage NFTDetails={communityObj} isCampaign={true} />
         </View>
         <View style={styles.description}>
+          <Text style={styles.NFTName}>{mem}</Text>
           <Text style={styles.descriptionText}>{desc}</Text>
         </View>
       </View>
@@ -122,6 +123,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignContent: 'center',
+    marginTop: 20,
   },
   header: {
     flex: 1,

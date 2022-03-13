@@ -10,12 +10,20 @@ import React, { munitiesuseState, useContext } from 'react';
 import { HomeFeedContext } from '../assets/contextProviders/HomeFeedProvider';
 import { Dondalicious } from '../assets/icons';
 
-const Communities = [
-  { 'Kanye West': { albumName: 'TeamYe', NFTName: 'TeamYe', mem: '21,045' } },
-  { Drake: { albumName: 'ClubStrokes', NFTName: 'ClubStrokes', mem: '5,671' } },
-  { 'The Strokes': { albumName: 'DrakeZone', NFTName: 'DrakeZone', mem: '32,135' } },
-  { 'D. Savage': { albumName: 'DSavCente', NFTName: 'DSavCente', mem: '934' } },
-];
+const mapper = require('../components/mapper');
+// const Communities = [
+//   {
+//     'Kanye West': {
+//       albumName: 'TeamYe',
+//       NFTName: 'TeamYe',
+//       mem: '21,045',
+//       desc: "Exclusive community available to fans who own NFTs from Yeat's“Up 2 Me” Campaign",
+//     },
+//   },
+//   { Drake: { albumName: 'ClubStrokes', NFTName: 'ClubStrokes', mem: '5,671' } },
+//   { 'The Strokes': { albumName: 'DrakeZone', NFTName: 'DrakeZone', mem: '32,135' } },
+//   { 'D. Savage': { albumName: 'DSavCente', NFTName: 'DSavCente', mem: '934' } },
+// ];
 
 export default function NFTDetails({ navigation, route }) {
   const [userDetails, setUserDetails] = useContext(UserDetailsContext);
@@ -124,7 +132,7 @@ export default function NFTDetails({ navigation, route }) {
                     setUserDetails({
                       ...userDetails,
                       potentialCommunities: [
-                        Communities.find((artist) => Object.keys(artist)[0] === artistName()),
+                        mapper().find((artist) => Object.keys(artist)[0] === artistName()),
                         ...userDetails['potentialCommunities'],
                       ],
                       purchasedNFTs: {

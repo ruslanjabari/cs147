@@ -1,6 +1,5 @@
 // TASK 3 S3
 
-import { useNavigation } from '@react-navigation/native';
 import { useContext } from 'react';
 
 import { SafeAreaView, View, FlatList, Pressable, Text, StyleSheet } from 'react-native';
@@ -32,7 +31,16 @@ const Elem = (item) => {
       }}
       // doesn't work because PressableNFT?
       onPress={() => handleAdd()}>
-      <PressableNFTImage NFTDetails={item.prop[Object.keys(item.prop)[0]]} isCampaign={true} />
+      <PressableNFTImage
+        NFTDetails={{
+          ...item.prop[Object.keys(item.prop)[0]],
+          width: '100%',
+          showInfo: true,
+          parentNav: 'COMMUNITIES',
+          destScreen: 'JoinIndividualCommunityScreen',
+        }}
+        isCampaign={true}
+      />
       {/* ^ pass in through item */}
     </Pressable>
   );
