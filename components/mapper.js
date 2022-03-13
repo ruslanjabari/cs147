@@ -34,6 +34,14 @@ function mapper() {
         NFTName: 'ClubStrokes',
         mem: '5,671',
         desc: 'Exclusive community available to fans who own a The Strokes NFT',
+        events: [
+          { eventTitle: 'SF Concert', eventLocation: 'SF' },
+          { eventTitle: 'LA Concert', eventLocation: 'LA' },
+          { eventTitle: 'NYC Concert', eventLocation: 'NYC' },
+          { eventTitle: 'Atlanta Concert', eventLocation: 'Atlanta' },
+          { eventTitle: 'Philly Concert', eventLocation: 'Philly' },
+          { eventTitle: 'DC Concert', eventLocation: 'DC' },
+        ],
       },
     },
     {
@@ -42,14 +50,27 @@ function mapper() {
         NFTName: 'DrakeZone',
         mem: '32,135',
         desc: 'Exclusive community available to fans who own a Drake NFT',
+        events: [
+          { eventTitle: 'Toronto Concert', eventLocation: 'Toronto' },
+          { eventTitle: 'SF Concert', eventLocation: 'SF' },
+          { eventTitle: 'Ottawa Concert', eventLocation: 'Ottawa' },
+          { eventTitle: 'LA Concert', eventLocation: 'LA' },
+          { eventTitle: 'NYC Concert', eventLocation: 'NYC' },
+        ],
       },
     },
     {
       'D. Savage': {
-        albumName: 'DSavCente',
-        NFTName: 'DSavCente',
+        albumName: 'DSavCenter',
+        NFTName: 'DSavCenter',
         mem: '934',
         desc: 'Exclusive community available to fans who own a D.Savage NFT',
+        events: [
+          { eventTitle: 'D. Savage listening party', eventLocation: 'IG LIVE' },
+          { eventTitle: 'Album sneak peak', eventLocation: 'IG LIVE' },
+          { eventTitle: 'Meet & Greet', eventLocation: 'LA' },
+          { eventTitle: 'Live Q&A', eventLocation: 'IG LIVE' },
+        ],
       },
     },
   ];
