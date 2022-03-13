@@ -10,14 +10,12 @@ import { PressableNFTImage } from '../components';
 const Elem = (item) => {
   // const navigation = useNavigation();
   // console.log('da item', item.prop[Object.keys(item.prop)[0]]);
+  console.log('\n da', item.prop[Object.keys(item.prop)]);
   const handleAdd = () => {
     const [userDetails, setUserDetails] = useContext(UserDetailsContext);
     setUserDetails({
       ...userDetails,
-      joinedCommunities: [
-        item.prop[Object.keys(item.prop)[0]],
-        ...userDetails['joinedCommunities'],
-      ],
+      joinedCommunities: [item.prop[Object.keys(item.prop)], ...userDetails['joinedCommunities']],
     });
   };
   return (

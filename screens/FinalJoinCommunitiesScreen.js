@@ -40,14 +40,26 @@ export default function FinalJoinCommunityScreen({ route }) {
     let tmp = [...userDetails['potentialCommunities']];
     let campaignObj;
     const map = mapper();
-    map.forEach((campaig) => {
+    map.map((campaig) => {
       // console.log(campaig);
       const c = campaig[Object.keys(campaig)[0]];
       if (c.albumName === albumName) {
         campaignObj = c;
+        // console.log(
+        //   'match found',
+        //   tmp.map((iter) => iter.albumName).indexOf(campaignObj.albumName),
+        //   tmp
+        // );
       }
     });
-    tmp.splice(tmp.indexOf(campaignObj), 1);
+    tmp.map((iter) => {
+      console.log('iter', iter);
+      if (iter[Object.keys(iter)[0]].albumName === campaignObj.albumName) {
+        tmp.splice(tmp.indexOf(iter), 1);
+      }
+    });
+    // tmp.splice(tmp.map((iter) => iter.albumName).indexOf(campaignObj.albumName), 1);
+    // tmp.splice(tmp.map((iter) => iter.albumName).indexOf(campaignObj.albumName), 1);
     let commus = userDetails['joinedCommunities'];
     commus.push(campaignObj);
     setUserDetails({

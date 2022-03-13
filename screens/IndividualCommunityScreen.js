@@ -1,5 +1,5 @@
 // IndividualCommunityScreen (TASK3)
-import { View, Text, StyleSheet, FlatList, SafeAreaView } from 'react-native';
+import { View, Text, StyleSheet, FlatList, SafeAreaView, Linking, Pressable } from 'react-native';
 import { ChatIconUnselected, DiscordIcon, MusicNoteIcon, ForwardIcon } from '../assets/icons';
 import { Colors } from '../assets/themes';
 
@@ -25,7 +25,6 @@ const ItemSeparatorComponent = () => (
 
 export default function IndividualCommunityScreen({ route }) {
   const community = route.params.item;
-  console.log('community', community);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
@@ -34,7 +33,12 @@ export default function IndividualCommunityScreen({ route }) {
           <Text style={styles.boldText}>{community.NFTName}</Text>
           <Text style={styles.regularText}>{community.mem} Members</Text>
         </View>
-        <DiscordIcon />
+        <Pressable
+          onPress={() => {
+            Linking.openURL('https:///www.discord.com');
+          }}>
+          <DiscordIcon color="black" />
+        </Pressable>
       </View>
       <Text style={styles.flatListHeader}>Featured Events</Text>
       <FlatList

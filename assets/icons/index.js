@@ -38,9 +38,10 @@ import ForwardIcon from './ForwardIcon.svg';
 import HeartIconFilled from './HeartIconFilled.svg';
 import TeamYe from './TeamYe.svg';
 import ClubStrokes from './ClubStrokes.svg';
-import DrakeZone from './DrakeZone.svg'
-import DSavCenter from './DSavCenter'
+import DrakeZone from './DrakeZone.svg';
+import DSavCenter from './DSavCenter.svg';
 
+import UpArrow from './UpArrow.svg';
 
 export {
   SearchIcon,
@@ -82,5 +83,6 @@ export {
   TeamYe,
   ClubStrokes,
   DrakeZone,
-  DSavCenter
+  DSavCenter,
+  UpArrow,
 };
