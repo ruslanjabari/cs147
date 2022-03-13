@@ -64,9 +64,9 @@ const Walk5NFTs = {
       sold: true,
     },
     {
-      NFTName: 'Jail #010',
+      NFTName: 'Jail #013',
       albumName: 'DONDA',
-      color: 'white',
+      color: 'black',
       val: '7.2 ETH',
       width: 200,
       showInfo: false,
@@ -155,9 +155,9 @@ const Milo7NFTs = {
       sold: true,
     },
     {
-      NFTName: 'Opera #010',
+      NFTName: 'Opera #013',
       albumName: 'D PHOENIX',
-      color: 'white',
+      color: 'black',
       val: '1.1 ETH',
       width: 200,
       showInfo: false,
@@ -197,8 +197,8 @@ function customTabNav({ state, descriptors, navigation, position }) {
             options.tabBarLabel !== undefined
               ? options.tabBarLabel
               : options.title !== undefined
-              ? options.title
-              : route.name;
+                ? options.title
+                : route.name;
 
           const isFocused = state.index === index;
 
@@ -261,6 +261,7 @@ export default function OtherProfileScreen({ route }) {
   let userName = route.params.userName;
 
   // maybe put in state
+  console.log(userName, "LOCAL NFT MAPPER JUSERNAME")
   let purchasedNFTs = LocalNFTMapper[userName];
 
   function renderItem({ item }, props) {
@@ -271,6 +272,7 @@ export default function OtherProfileScreen({ route }) {
   function ArtistsNFTs(props) {
     return (
       <>
+        {console.log(props.data[0], "MY FRICKIN")}
         <InfoBox artist={props.data[0].artist} />
         <FlatList
           contentContainerStyle={styles.NFTContainer}

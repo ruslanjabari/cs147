@@ -29,7 +29,7 @@ export default function InfoBox({ artist }) {
       },
     },
     {
-      'D.Savage': {
+      'D. Savage': {
         monthly: '2,789',
         total: '23,789',
         portfolio: '4%',
