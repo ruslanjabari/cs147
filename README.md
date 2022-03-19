@@ -1,8 +1,9 @@
 # cs147
 To run this prototype please execute the following commands:
-1) git clone https://github.com/ruslanjabari/cs147/tree/tmp
-2) npm install (in the directory you cloned into)
-3) expo start
+1) git clone --branch tmp https://github.com/ruslanjabari/cs147.git
+2) navigate to the cloned directory (i.e. cd cs147)
+3) install the node modules (npm install within the cs147 directory)
+4) expo start
       — Once you do expo start and a QR code is produced in your terminal, press i for an iphone simulator (you must have one installed) or a for an android 
       simulator. You can also scan the QR code and run the prototype on yoor phone if you have expo go.
 
