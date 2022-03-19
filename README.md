@@ -7,6 +7,8 @@ To run this prototype please execute the following commands:
       — Once you do expo start and a QR code is produced in your terminal, press i for an iphone simulator (you must have one installed) or a for an android 
       simulator. You can also scan the QR code and run the prototype on yoor phone if you have expo go.
 
+* Note, if an error is thrown at any time, try pressing "dismiss" until you are out of the error screen, there should be no state-breaking errors.
+
 **Further Guidance**
 Once you open up the app, you will begin at the home feed, where you can see recent activity. From here, feel free to browse and check out our various features:
 1) purchasing NFTs
